@@ -18,3 +18,5 @@ var max = Math.max.apply(Math,values);
 
 Math.max内部不依赖this，所以你的例子没有差别；下面的代码就不是这样了
 http://img.blog.csdn.net/20160312103011365
+
+第一个参数是你调用这个函数的对象，在es5 的严格模式下，调用函数必须指定调用对象。不是严格模式没要求。你传math就相当于math对象调用这个方法，你传window相当于window调用这个方法。其实这里没区别，你直接传null也是可以的。
