@@ -1,6 +1,13 @@
 # js_querstion_note
 js相关问题记录
 
+# 需要反复看的JS书
+javascript高级程序设计
+javascript算法与结构
+
+计算机专业书
+<<算法导论>>
+
 //
 js中, apply方法简单理解：
 Function.apply(obj,args)方法能接收两个参数
@@ -22,3 +29,12 @@ http://img.blog.csdn.net/20160312103011365
 第一个参数是你调用这个函数的对象，在es5 的严格模式下，调用函数必须指定调用对象。不是严格模式没要求。你传math就相当于math对象调用这个方法，你传window相当于window调用这个方法。其实这里没区别，你直接传null也是可以的。
 
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
+
+# 数组的forEach方法遍历 获取index索引值的方法
+var arr = ['a', 'b', 'c'];
+arr.forEach((item) => {
+	console.log(item, arr.indexOf(item));
+}) // a 0
+      b 1
+      c 2
+
