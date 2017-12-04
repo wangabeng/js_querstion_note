@@ -51,3 +51,7 @@ $('.test').tab().css('background', 'red');
 等价于
 $('.test').tab();
 $('.test').css('background', 'red');
+
+# sublime设置 tab为2个空格
+	"tab_size": 4,
+	"translate_tabs_to_spaces": true
