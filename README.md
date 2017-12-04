@@ -37,8 +37,7 @@ arr.forEach((item) => {
 }) // a 0
       b 1
       c 2
-
-4# jQuery注册方法
+# jQuery方法扩展
 1 注册 
 	$.fn.extend({
 		tab: function () {
