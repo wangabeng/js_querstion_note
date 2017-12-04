@@ -38,3 +38,17 @@ arr.forEach((item) => {
       b 1
       c 2
 
+4# jQuery注册方法
+1 注册 
+	$.fn.extend({
+		tab: function () {
+			console.log('data');
+			// 加上this把自身返回 即把调用此方法的对象返回 this指 $('.test') 返回后即可实现链式调用 
+			// return this;  
+		}
+	});
+2 调用 比如一个div.test调用（加上return后 可以实现链式调用）
+$('.test').tab().css('background', 'red');
+等价于
+$('.test').tab();
+$('.test').css('background', 'red');
