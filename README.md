@@ -53,5 +53,18 @@ $('.test').tab();
 $('.test').css('background', 'red');
 
 # sublime设置 tab为2个空格
-最快捷的设置方法：
+针对已经完成的文件设置方法：
 查看-把使用空格缩进 勾选 标签宽度为2勾选
+通用的设置方法：
+1. 菜单栏里点击 Preferences-> Setting-User
+2. 在弹出来的文本里，添加如下两行:
+{
+
+    // 注意只有一个大括号，如果之前有属性，如在之前的属性前确保有 ，(逗号)
+
+    //把 tab 转换成4个空格
+    "tab_size": 4,
+
+    //把tab 转换成 空格
+    "translate_tabs_to_spaces": true
+}
