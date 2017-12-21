@@ -53,5 +53,5 @@ $('.test').tab();
 $('.test').css('background', 'red');
 
 # sublime设置 tab为2个空格
-	"tab_size": 4,
-	"translate_tabs_to_spaces": true
+最快捷的设置方法：
+查看-把使用空格缩进 勾选 标签宽度为2勾选
