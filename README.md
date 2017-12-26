@@ -68,3 +68,12 @@ $('.test').css('background', 'red');
     //把tab 转换成 空格
     "translate_tabs_to_spaces": true
 }
+
+# encodeURL及encodeURLComponent的区别：
+㈠ 非转移字符：
+	字母：52个，十进制数字10个，ASCII标点符号8个 - _ . ! ~ * ' ( )
+㈡ 除了㈠㈢的其他字符 包括空格 \ 等等
+㈢ 用于分隔URI组件的标点符号共11个，包含10个保留字符 : ; / ? @ & = + $ , 1个井号 #
+encodeURL需要转义的包括㈡
+encodeURLComponent需要转义的包括 ㈡㈢
+实际中encodeURLComponent用得比较多
