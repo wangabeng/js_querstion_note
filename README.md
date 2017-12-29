@@ -90,4 +90,21 @@ http://localhost:8080/product/list.do?pageNum=1&pageSize=10&orderBy=default&cate
 就匹配到下面网址的内容了：
 http://www.happymmall.com/product/list.do?pageNum=1&pageSize=10&orderBy=default&categoryId=100008
 
+# 解决html文件更改 不能刷新的问题
+参考： http://coding.imooc.com/learn/questiondetail/6266.html
+1 webpack.config.json文件的 output对象配置
+ publicPath: '/dist' 
+2 package.json配置script：
+ "server": "webpack-dev-server --inline --port 8080"
+3 删掉webpack.config.json的配置
+/*  devServer: {
+    contentBase: './dist/view',
+    historyApiFallback: true,
+    inline: true,
+    port: 8080,
+    noInfo : true
+  },*/
+
+# 解决bash命令行ctrl+c不能杀死node进程的问题（2个进程 ctrl+c只能杀死一个进程，导致再次启动dev-server的时候无法开启服务）
+解决方法 用系统自带的命令行工具 ctrl+c即可停止node进程
 
