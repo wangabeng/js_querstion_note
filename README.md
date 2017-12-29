@@ -78,3 +78,16 @@ $('.test').css('background', 'red');
 encodeURL需要转义的包括㈡
 encodeURLComponent需要转义的包括 ㈡㈢
 实际中encodeURLComponent用得比较多
+
+#fiddler正则匹配应用：
+比如 在开发的时候 本地测试url是 localhost:8080 开发时想怎样匹配
+http://localhost:8080/product/ 匹配 http://localhost:8080/product/
+在fildder中应该这样配置：
+REGEX:http://localhost:8080/product/*
+http://www.happymmall.com/product/
+就匹配到所有 http://www.happymmall.com/product/ 这个路径下的文件了
+http://localhost:8080/product/list.do?pageNum=1&pageSize=10&orderBy=default&categoryId=100009
+就匹配到下面网址的内容了：
+http://www.happymmall.com/product/list.do?pageNum=1&pageSize=10&orderBy=default&categoryId=100008
+
+
