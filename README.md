@@ -108,3 +108,5 @@ http://www.happymmall.com/product/list.do?pageNum=1&pageSize=10&orderBy=default&
 # 解决bash命令行ctrl+c不能杀死node进程的问题（2个进程 ctrl+c只能杀死一个进程，导致再次启动dev-server的时候无法开启服务）
 解决方法 用系统自带的命令行工具 ctrl+c即可停止node进程
 
+# (?<=exp)也叫零宽度正回顾后发断言 在js中不支持
+(?<=exp)也叫零宽度正回顾后发断言，它断言自身出现的位置的前面能匹配表达式exp。比如(?<=\bre)\w+\b会匹配以re开头的单词的后半部分(除了re以外的部分)，例如在查找reading a book时，它匹配ading。
