@@ -110,3 +110,23 @@ http://www.happymmall.com/product/list.do?pageNum=1&pageSize=10&orderBy=default&
 
 # (?<=exp)也叫零宽度正回顾后发断言 在js中不支持
 (?<=exp)也叫零宽度正回顾后发断言，它断言自身出现的位置的前面能匹配表达式exp。比如(?<=\bre)\w+\b会匹配以re开头的单词的后半部分(除了re以外的部分)，例如在查找reading a book时，它匹配ading。
+
+# 一个函数理清call和apply的区别
+用法  
+oneDefinedFuntionName.apply(this[or some object], arguments[is an array]) // call用法
+oneDefinedFuntionName.call(this[or some object], arguments[0], arguments[1]) // apply用法
+function test (a, b) {
+  return a + b ;
+}
+function sum (arr) {
+  console.log(test.apply(this, arr));
+} 
+sum([5, 6]); // 11
+
+function test (a, b) {
+  return a + b ;
+}
+function sum (c, d) {
+  console.log(test.apply(this, c, d));
+} 
+sum(5, 6); // 11
