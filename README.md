@@ -130,3 +130,26 @@ function sum (c, d) {
   console.log(test.apply(this, c, d));
 } 
 sum(5, 6); // 11
+
+# 关于设备像素比
+设备像素比的实际意义
+Dec 17, 2016
+设备像素比devicePixelRatio简单介绍一文专业介绍了设备像素比，摘抄精简为以下：
+设备像素比（devicePixelRatio）其实指的是window.devicePixelRatio, 被所有WebKit浏览器以及Opera所支持，随着显示器的发展，这个属性也慢慢登上了前端技术的舞台。
+window.devicePixelRatio是设备上物理像素和设备独立像素(device-independent pixels (dips))的比例。
+
+ 设备像素比 = 物理像素 / 设备独立像素
+设备独立像素（这是Android中的叫法，就是web开发中CSS像素）与屏幕密度(硬件)有关。可以用来辅助区分视网膜设备还是非视网膜设备。
+所有非视网膜屏幕的iphone在垂直的时候，宽度为320物理像素，当你使用
+
+<meta name="viewport" content="width=device-width">
+的时候，会设置视窗布局宽度（不同于视觉区域宽度，不放大显示情况下，两者大小一致）为320px, 于是，页面很自然地覆盖在屏幕上。
+而对于视网膜屏幕的iphone，如iphone4s, 纵向显示的时候，屏幕物理像素640像素。同样，当用户设置
+
+<meta name="viewport" content="width=device-width">
+的时候，其视区宽度并不是640像素，而是320像素，这是为了有更好的阅读体验 – 更合适的文字大小。
+
+这样，在视网膜屏幕的iphone上，屏幕物理像素640像素，独立像素还是320像素，因此，window.devicePixelRatio等于2
+
+从以上现象得出的结论是：
+UI设计师按照手机物理像素出设计稿，切图时根据其设备像素比来换算设备独立像素（CSS像素），比如视网膜手机iPhone6，物理像素750px×1334px，由于其设备像素比为2，CSS切图时需要将设计稿的所有尺寸除以2，才是正确CSS像素值。
