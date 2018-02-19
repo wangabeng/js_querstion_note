@@ -169,8 +169,16 @@ http://blog.csdn.net/sufubo/article/details/50990684
 只要是”^”这个字符是在中括号”[]”中被使用的话就是表示字符类的否定，如果不是的话就是表示限定开头。我这里说的是直接在”[]”中使用，不包括嵌套使用。 
 其实也就是说”[]”代表的是一个字符集，”^”只有在字符集中才是反向字符集的意思。
 
+(^|&)匹配字符串开头或者&字符
+
 []表示并列关系
 var str='abc';
 var reg = /[^ac]/; // 匹配非a 且非c的字符
 var sum = str.match(reg);
 console.log(sum); //["b", index: 1, input: "abc"]
+
+匹配url中的查询参数
+var str='http://runjie.benkid.cn/api/find?contentName=service&curPage=1&pageCapacity=8&sort=id#sdk';
+var reg = /\?(\w+=\w+($|&)?)+(#|$)?/g;
+var sum = str.match(reg);
+console.log(sum); // ["?contentName=service&curPage=1&pageCapacity=8&sort=id#"]
