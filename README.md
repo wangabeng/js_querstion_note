@@ -156,3 +156,21 @@ window.devicePixelRatio是设备上物理像素和设备独立像素(device-inde
 UI设计师按照手机物理像素出设计稿，切图时根据其设备像素比来换算设备独立像素（CSS像素），比如视网膜手机iPhone6，物理像素750px×1334px，由于其设备像素比为2，CSS切图时需要将设计稿的所有尺寸除以2，才是正确CSS像素值。
 
 https://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html
+
+# 正则中^的含义
+http://blog.csdn.net/sufubo/article/details/50990684
+正则表达式中的"^"这个符号的一些思考
+1 /^A/会匹配"An e"中的A，但是不会匹配"ab A"中的A
+2 
+[^a]表示“匹配除了a的任意字符”。
+[^a-zA-Z0-9]表示“找到一个非字母也非数字的字符”。
+[\^abc]表示“找到一个插入符或者a或者b或者c”。
+[^\^]表示“找到除了插入符外的任意字符”。（呕！）
+只要是”^”这个字符是在中括号”[]”中被使用的话就是表示字符类的否定，如果不是的话就是表示限定开头。我这里说的是直接在”[]”中使用，不包括嵌套使用。 
+其实也就是说”[]”代表的是一个字符集，”^”只有在字符集中才是反向字符集的意思。
+
+[]表示并列关系
+var str='abc';
+var reg = /[^ac]/; // 匹配非a 且非c的字符
+var sum = str.match(reg);
+console.log(sum); //["b", index: 1, input: "abc"]
