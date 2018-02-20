@@ -186,3 +186,7 @@ console.log(sum); // ["?contentName=service&curPage=1&pageCapacity=8&sort=id#"]
 #秒懂原型链
 http://blog.csdn.net/u012468376/article/details/53121081
 http://blog.csdn.net/u012468376/article/details/53127929
+
+# 嵌入百度地图api
+http://api.map.baidu.com/lbsapi/creatmap/
+
