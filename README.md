@@ -182,3 +182,7 @@ var str='http://runjie.benkid.cn/api/find?contentName=service&curPage=1&pageCapa
 var reg = /\?(\w+=\w+($|&)?)+(#|$)?/g;
 var sum = str.match(reg);
 console.log(sum); // ["?contentName=service&curPage=1&pageCapacity=8&sort=id#"]
+
+#秒懂原型链
+http://blog.csdn.net/u012468376/article/details/53121081
+http://blog.csdn.net/u012468376/article/details/53127929
