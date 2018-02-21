@@ -190,6 +190,15 @@ http://blog.csdn.net/u012468376/article/details/53127929
 # 嵌入百度地图api
 http://api.map.baidu.com/lbsapi/creatmap/
 
+# 基本数据类型
+Undefined Null Boolean Number String 
+复杂数据类型
+object
+
+# js内置对象 
+(Number String Boolean 基本包装类型)  Array Object Function 
+RegExp Global Date Math 
+
 # null和undefined区别
 都是基本数据类型 区别是 
 null 是一个空的对象指针，是空值 typeof null // object
@@ -197,3 +206,191 @@ null 是一个空的对象指针，是空值 typeof null // object
 Number(null); //返回值为 0
 
 undefined 表示“缺少值”，即此处应有一个值，但还没有定义；转为数值时为NaN（非数字值的特殊值）。
+Number(undefined); //NaN
+5+undefined; //Nan
+典型的出现场景如下：
+(1)变量被声明了，但没有赋值；
+(2) 调用函数时，应提供的参数未提供
+(3) 对象没的属性未定义；
+(4) 对象没有返回值，则默认返回undefined
+var i;
+i; //undefined
+
+  function f(x) {
+      console.log(X);
+  }
+  f(); //undefined
+
+  var o = new Object();
+  o.name; //undefined
+
+  var x = f();
+  x;  //undefined
+
+# js中new的作用
+1 创建了一个实例对象
+2 这个实例对象的_proto_属性指向这个实例的原型
+3 改变原型方法里的this指向 this指向这个实例
+
+# js中给对象添加属性的2种方式
+1 直接添加到该对象上
+2 给该对象的prototype模式给对象添加属性和方法
+
+# 手写ajax实现
+// 1 创建一个XHR对象
+var xhr = new XMLHttpRequest();
+// 2 打开网页
+xhr.open('GET', '/api', false) // false为异步请求 
+// 3 定义状态改变的执行函数
+xhr.onreadystatechange = function () {
+  if (xhr.readyState == 4) {
+    if (xhr.status == 200) {
+      console.log(xhr.responseText);
+    }
+  }
+}
+// 4 发送请求
+xhr.send(null);
+
+// 关于readyState
+0 未初始化 没有调用send方法
+1 已经调用send方法 正在发送请求
+2 send方法执行完成 已经收到全部响应内容
+3 正在解析响应内容
+4 响应内容解析完成 可以在客户端调用
+
+status
+2XX 请求成功
+3XX 需要重定向 浏览器直接跳转
+4xx 客户端请求错误 404 找不到
+5XX 服务端错误
+
+# 浏览器理解
+浏览器是直接在用户端使用的 实现和用户交互 所以浏览器在前端扮演很重要的角色
+
+#浏览器内核
+Trident(IE内核 )
+Gecko(Firefo内核) // 会自动更新 一般不会出现兼容性问题
+Blink(Google和Opera SOftware内核)
+Webkit(Safari内核 Chrome内核原型， 开源)
+Presto(Opera前内核 现在已经废弃了)
+
+# css样式权重
+!important > 内嵌样式 > ID > class >tagname | 伪类 | 属性选择器 > 伪对象 > 继承 > 通配符
+css代码存放位置查看优先级
+内嵌样式 > 内部样式表 > 外联样式表
+
+# html5的新特性
+a 拖拽释放 (Drag and drop) API
+b 语义化更好的内容标签 header nav footer aside article section
+c 音频 视频 audio video
+d 画布canvas API
+e 地理位置 Geolocation API
+f 本地离线存储 localStorage
+g sessionStorage 关闭浏览器后会自动删除
+h 表单控件 calendar data time email url search
+i 新的技术 webworker websocket Geolocation
+
+# h5移除了哪些元素
+1 纯表现的元素 basefont big center font s strike tt u
+2 对可用性产生负面影响的元素 frame frameset noframes
+
+# 如何处理html5的兼容性问题（旧浏览器不兼容）
+方法1 针对ie 6 7 8 创建新的标签
+document.creatElement('')  // 然后添加并设置样式
+方法2 使用成熟的框架 使用最多的是html5shim
+<!--[if lt IE 9]>
+<script src='......./html5shim.js'></script>
+<![endif]-->
+
+#css 如何优化提高性能
+压缩
+利用继承 合写css
+抽离拆分css 不加载所有css 按需加载
+图标尽量采用框架的图标
+css放在head中 减少请求
+不用css表达式
+避免使用通配符或隐式通配符
+用最简单的方式布局
+
+# css2实现一个元素水平居中和垂直居中对齐
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+      .wrapper {
+        width: 500px;
+        height: 500px;
+        background: gray;
+        text-align: center;
+      }
+      .main {
+        width: 200px;
+        height: 200px;
+        background: red;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      /* 
+      方法2添加伪类
+      .wrapper:after {
+        content: '';
+        height: 100%;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+       */
+      .vm {
+        height: 100%;
+        background: blue;
+        display: inline-block;
+        vertical-align: middle;
+        width: 2px;/*test*/
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main"></div><div class="vm"></div><!--方法2 通过css2添加伪类实现 则把.vm元素换成wrapper的after伪类-->
+    </div>
+
+  </body>
+  </html>
+
+  通过css3实现(可以用flex布局)
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .wrapper {
+      width: 500px;
+      height: 500px;
+      background: gray;
+      display:-moz-box;
+      display:-webkit-box;
+      display:box;
+      -webkit-box-pack: center;
+      -webkit-box-align: center;
+    }
+    .main {
+      width: 200px;
+      height: 200px;
+      background: red;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="main"></div>
+  </div>
+
+</body>
+</html>
+
+#
