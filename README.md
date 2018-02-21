@@ -190,3 +190,10 @@ http://blog.csdn.net/u012468376/article/details/53127929
 # 嵌入百度地图api
 http://api.map.baidu.com/lbsapi/creatmap/
 
+# null和undefined区别
+都是基本数据类型 区别是 
+null 是一个空的对象指针，是空值 typeof null // object
+可以自动转化为0
+Number(null); //返回值为 0
+
+undefined 表示“缺少值”，即此处应有一个值，但还没有定义；转为数值时为NaN（非数字值的特殊值）。
