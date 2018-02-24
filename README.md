@@ -393,4 +393,252 @@ css放在head中 减少请求
 </body>
 </html>
 
-#
+# 一面 上限
+ajax请求原理
+跨域请求解决方法
+
+# 关于面试的启发
+http://v.youku.com/v_show/id_XMjk3MzgyMTU4MA==.html?spm=a2h0k.8191407.0.0&from=s1.8-1-1.2
+1 心态 淡定 可能不是我low 可能太
+2 当作一次查漏补缺
+
+# json深拷贝
+方法1
+function cloneJson (json) {
+  return JSON.parse(JSON.stringify(json));
+}
+方法2
+function clone (json) {
+  var isArray = json instanceof Array;
+  var _json = isArray? []: {};
+  for (var k in json) {
+    var _json[k] = json[k] isinstanceof Object? clone(json[k]): json[k];
+  }
+  return _json;
+}
+
+# css盒子模型
+盒子模型包括border padding width height
+比如：
+<div>
+    sdfsfdsfffffffffffffffffffffffff
+</div>
+设置width:150px height: 150
+在低版本的IE（5 6）中 高度会被文字撑开 实际高度会大于150px(兼容性问题)
+
+# 导致产生跨域问题的三个条件
+1 浏览器限制
+2 跨域
+3 xhr请求
+
+# 剖析Vue原理&实现双向绑定MVVM
+https://segmentfault.com/a/1190000006599500
+
+# 正则子项匹配
+需求： 把字符串转成驼峰命名 例如 ben-wang-haha 转成benWangHaha
+用正则子项
+var str = 'ben-wang-haha';
+function change (str) {
+  var reg = /-(\w)/g;
+  return str.replace(reg, function ($0, $1) { // $1表示(\w)
+    console.log($0 + 'and' + $1); // -w and w -h and h匹配一次 执行一次
+    return $1.toUpperCase();
+  })
+}
+console.log(change(str)); // benWangHaha
+
+# 如何遍历出26个字母
+  <script>
+  for(var i=0;i<26;i++){
+      document.write(String.fromCharCode(65+i));//输出A-Z  26个大写字母
+  }
+  for(var i=0;i<26;i++){
+      document.write(String.fromCharCode(97+i));//输出a-z  26个小写字母
+  }
+  </script>
+
+# 需求123456789 变成 123,456,789
+var str = '123456789';
+function change (str) {
+  return str.replace(/(?!(?=\b))(?=(\d{3})+$)/g, ',');
+}
+
+console.log(change(str));
+
+
+# 正则里如何使用变量
+var str = 'ssgggaaaassssbsssss';
+function change (str) {
+  var regN = 's';
+  var reg = new RegExp(regN, 'g');
+  return str.match(reg).length;
+}
+console.log(change(str)); // benWangHaha
+
+# 正则表达式简明教程 
+  https://deerchao.net/tutorials/regex/regex.htm
+  http://www.360doc.com/content/16/0422/13/478627_552831815.shtml
+
+  https://www.zybang.com/question/abbd3e6de6eabdf2f33f1d59b38b1ab2.html 正则在线测试 http://tool.chinaz.com/regex/
+
+# 性能优化的几个关键点:
+1 多使用内存 缓存
+2 减少cup计算 减少网络请求
+3 静态资源合并压缩 静态资源缓存
+4 使用CDN让资源加载更快
+5 使用SSR后端渲染
+6 渲染优化 css放前面 JS放后面
+7 懒加载（图片）
+8 尽量减少DOM操作 对DOM查询做缓存
+9 事件节流.
+
+# 原型链问题
+  var F = function(){}
+  Object.prototype.a = function(){
+    console.log('a()')
+  }
+  Function.prototype.b = function(){
+    console.log('b()')
+  }
+  var f = new F()
+
+  F.a() // ?
+  F.b() // ?
+  f.a() // ?
+  f.b() // ?
+
+https://segmentfault.com/q/1010000002736664/a-1020000002737037
+
+假如我们有以下例子:画的图
+见我
+var foo = {},
+    F = function(){};
+
+Object.prototype.a = 'value a';
+Function.prototype.b = 'value b';
+
+console.log(foo.a)    // value a
+console.log(foo.b)    // undefined
+console.log(F.a)      // value a
+console.log(F.b)      // value b
+
+那么
+
+foo.a的查找路径: foo自身: 没有 ---> foo.__proto__(Object.prototype): 找到value a
+foo.b的查找路径: foo自身: 没有 ---> foo.__proto__(Object.prototype): 没有 ---> foo.__proto__.__proto__ (Object.prototype.__proto__): 没有
+F.a的查找路径: F自身: 没有 ---> F.__proto__(Function.prototype): 没有 ---> F.__proto__.__proto__(Object.prototype): 找到value a
+F.b的查找路径: F自身: 没有 ---> F.__proto__(Function.prototype): 找到value b
+
+# 预解析过程中 变量和函数重名了 就只留下函数 注意以下2种情况的区别
+alert(getAge) // function getAge() {
+                    console.log(50)
+                  }
+ var getAge = function () {
+    console.log(40)
+  }
+
+  function getAge() {
+    console.log(50)
+  }
+
+////
+var getAge = function () {
+    console.log(40)
+  }
+
+  function getAge() {
+    console.log(50)
+  }
+console.log(getAge)  //ƒ () {
+                        console.log(40)
+                      }  
+
+// 阿里的
+  function Person() {
+    getAge = function () {
+      console.log(10)
+    }
+    return this
+  }
+
+  Person.getAge = function () {
+    console.log(20)
+  }
+
+  Person.prototype.getAge = function () {
+    console.log(30)
+  }
+
+  var getAge = function () {
+    console.log(40)
+  }
+
+  function getAge() {
+    console.log(50)
+  }
+
+  Person.getAge() // ?20
+  getAge() // ?50 X40 v
+  Person().getAge() // ?20  x 10 v
+  getAge() // ?50 X     10 v
+  new Person.getAge() // ?20
+  new Person().getAge() // ?30  
+
+# 滴滴难题
+  https://www.cnblogs.com/foolgry/p/5309192.html
+  function fun(n, o) {
+    console.log(o)
+    return {
+      fun: function (m) {
+        return fun(m, n)
+      }
+    }
+  }
+
+  // 测试一: undefined ? ? ?
+  var a = fun(0) // undefined
+  a.fun(1) // 0
+  a.fun(2) // 0
+  a.fun(3) // 0
+
+  // 测试二: undefined ? ? ?
+  var b = fun(0).fun(1).fun(2).fun(3)
+
+  // 测试三: undefined ? ? ?
+  var c = fun(0).fun(1)
+  c.fun(2)
+  c.fun(3)
+
+# 对象的访问器属性操作 Object.defineProperty()
+  var book = {
+    _year: 2004,
+    edition: 1
+  };
+  Object.defineProperty(book, 'year', {
+    get: function () {
+      return this._year;
+    },
+    set: function (newValue) {
+      this.edition = 3;
+      this._year = newValue;
+    }
+  });
+  // book.year = 2008;
+  console.log(book.year); // 2004 get函数是在读取'year'的时候调用
+
+  //////
+  var book = {
+    _year: 2004,
+    edition: 1
+  };
+  Object.defineProperty(book, 'year', {
+    get: function () {
+      return this._year;
+    },
+    set: function (newValue) {
+      this.edition = 3;
+      this._year = newValue;
+    }
+  });
+  book.year = 2008; // set函数是在写入'year'的时候调用
+  console.log(book._year); // 2008   
