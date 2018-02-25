@@ -641,4 +641,101 @@ console.log(getAge)  //ƒ () {
     }
   });
   book.year = 2008; // set函数是在写入'year'的时候调用
-  console.log(book._year); // 2008   
+  console.log(book._year); // 2008  
+
+# 父元素高度设置为min-height后 子元素的height 100%无效 why?
+  父及元素 div 设置 min-height:400px; 
+  子元素 div设置 height:100%； 
+  奇怪的是子元素的100%并没有把400px继承过来，100%的高度设置失效
+
+  <div style="min-height:400px; background:#000;" class="a1">
+    <div style="height:100%; background:#fff;" class="b1"></div>
+  </div>
+
+  原因：min-height 是在 height 计算之后再套用的。在计算容器 height 时，默认值为 auto，故由其内容决定。这种情况下子元素百分比的 height 都会当作 auto 处理。例子中算出子元素高度 0，于是容器得到 height 为 0，比 min-height 小，所以最后容器应用 min-height。
+
+  总结：height 100%失效原因 
+  1 此元素的父级的父级的父级 没有设置特定的高度 或是即便设置了min-height类似的高度
+  2 父级没有加定位 fixed absolute等
+
+# 子元素margin-top属性传递给父元素的问题  
+  html结构：
+  <div class="box1"><div class="box1_1"></div></div>
+
+  css样式：
+  .box1{height:400px;background:#fad;}
+  .box1_1{height:100px;margin-top:50px;background:#ade;}
+  解决办法：
+  1.修改父元素的高度，增添padding-top样式模拟（常用）；// 这样总高度会增加 不可取
+  2.为父元素添加overflow:hidden;样式即可（完美）；// 总高度不会增加 可取 很完美 或则用clearfix清除伪类
+  5.为父元素或者子元素声明浮动（可用）；
+  3.为父元素添加border（可用）;
+  4.添加额外的元素放在子元素最前面，设置高度为1px，overflow:hidden(若为行内元素，需要声明为块元素)（啰嗦）;
+  6.为父元素或者子元素声明绝对定位（……）。
+   
+  原理
+  一个盒子如果没有上补白(padding-top)和上边框(border-top)，那么这个盒子的上边距会和其内部文档流中的第一个子元素的上边距重叠。
+   
+  这就是原因了。“嵌套”的盒元素也算“毗邻”，也会 Collapsing Margins。这个合并Margin其实很常见，就是文章段落元素<p/>，并列很多个的时候，每一个都有上下1em的margin，但相邻的<p/>之间只会显示1em的间隔而不是相加的2em。这个很好理解，我就是奇怪为什么W3C要让嵌套的元素也共享Margin，想不出来在什么情况下需要这样的表现。 　　这个问题的避免方法很多，只要破坏它出现的条件就行。给Outer Div 加上 padding/border，或者给 Outer Div / Inner Div 设置为 float/position:absolute(CSS2.1规定浮动元素和绝对定位元素不参与Margin折叠)。
+   
+  在 IE/Win 中如果这个盒子有 layout 那么这种现象就不会发生了：似乎拥有 layout 会阻止其孩子的边距伸出包含容器之外。此外当 hasLayout = true 时，不论包含容器还是孩子元素，都会有边距计算错误的问题出现。
+
+# stickerfoot布局 出自慕课的饿了吗App项目：
+  代码如下
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+/*  http://blog.csdn.net/FE_dev/article/details/68954481
+*/
+    .detail {  /* 和手机屏幕一样大 */
+      width: 100%;
+      height:100%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 0;
+    }
+    .detail-wrapper {
+      width: 100%;
+      min-height:100%;
+      /*overflow: hidden; 用了overflow hidden清楚浮动 就不需要加clearfix清除浮动了*/
+    }
+    .detail-main {
+      width: 100%;
+      min-height:100%;
+      background: gray;
+      margin-top: 64px;
+      padding-bottom: 64px;  
+    } 
+    .detail-close {
+      /*position: relative;*/
+      width: 32px;
+      height:32px;
+      background: blue;
+      margin: -64px auto 0 auto;
+      clear: both;
+    }
+    .clearfix { /*如果用clearfix必须设置为inline-block 否则总高度还是会增加*/
+      display: inline-block;
+    }
+    .clearfix:after {
+       content:""; 
+       display: block; 
+       clear:both; 
+    }
+  </style>
+</head>
+<body>
+  <div class="detail">
+    <div class="detail-wrapper clearfix">
+      <div class="detail-main">
+          主内容区<br>主内容区<br>
+    </div>
+
+    <div class="detail-close"></div>
+  </div>
+</body>
+</html>  
