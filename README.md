@@ -749,3 +749,101 @@ https://www.cnblogs.com/ajianbeyourself/p/5815689.html
   如何读取data的属性
   $('read-haha').data('role') // page
   $('read-haha').data('options') // {"name":"John"}
+
+# chorme强制刷新页面快捷键
+普通刷新 ctrl + r
+强制刷新 ctrl + F5
+
+# 用权重值决定哪种样式胜出
+  一个内联样式 1000分
+  一个ID选择器样式 100分
+  一个类选择器 10分
+  一个标签选择器 1分
+
+# 几个重要的CSS3应用
+1 transfrom 放大缩小等变换 这个变换是瞬间完成的 比如 当鼠标移入的时候 从一种状态变换到另外一种状态 没有过渡的效果 瞬间完成 需要触发 比如鼠标悬停的时候触发
+  transform: rotate(10deg) // 旋转10度  
+  transform: scale(2) 
+  transform: scale(2) 
+  transform: translate(1px,2px) // 水平方向和垂直方向移动一定位置
+  transform: translate3d(1px,2px,0) // 水平方向和垂直方向移动一定位置
+  transform: skew(0, 45deg) // 水平或竖直方向倾斜一定位置
+
+  transform-origin: 0 0  或者 right bottom 或者 0% 0%  // 设置中心点
+
+2 transition 设置在一定时间内 一组CSS属性变换到另一组属性的动画展示过程
+例如 设置一个横幅在2秒内旋转360度。和tranform区别就是有动画过渡效果。  
+这个动画需要触发 比如鼠标悬停 等
+示例：
+.test {
+  color: red;
+  background-color: green;
+
+  transition-property: background-color; // 可以设置多个动画属性 用逗号隔开
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out; // 深入用法 transition-timing-function: cubic-bezier(.20, .96, .74, .07) //使用函数控制动画过渡缓急
+  transition-delay: 0.5s // 设置动画延迟
+}
+.test:hover {
+  background-color: red;
+}
+
+transition快捷设置方法:
+.test {
+  color: red;
+  background-color: green;
+  transition: color 1s, background-color 2s;
+}
+.test:hover {
+  color: blue;
+  background-color: yellow;
+}
+
+3 animation动画 不需要触发
+创建动画的2个步骤：
+第一步： 定义动画
+第二步： 定义关键帧
+示例：
+让一个元素从不显示到淡入视图
+第一步： 定义动画
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  50% {
+    tranform: scale(1.2);
+    opacity: 0.6;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+第二步： 应用动画
+.test {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+}
+也可以同时给一个元素定义多个动画并应用 例如
+.test {
+  animation-name: fadeIn, blink;
+  animation-duration: 1s, 3s; // 定时
+  animation-timing-function: ease-out;
+  animation-delay: 1s; // 设置动画延时
+  animation-iteration-count: 10/infinite; // 设置动画播放的次数 10次或无限制重复播放
+}
+
+animation的快捷方式应用
+.test {
+  animation-name: fadeIn 2s ease-in-out 2 alternate 0.5s;
+}
+如何暂停动画：
+只有一个方法能应用它 用一个伪类触发 例如鼠标悬停来暂停动画。
+.test:hover {
+  animation-play-state: paused;
+}
+
+# css3 防止浮动下落：(IE8及以上均支持)
+box-sizing: content-box; // 盒子宽度包含了border padding css width
+box-sizing: padding-box; // 盒子宽度包含了padding css width
+box-sizing: border-box; // 盒子宽度包含了border css width
