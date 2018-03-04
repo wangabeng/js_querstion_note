@@ -739,3 +739,13 @@ console.log(getAge)  //ƒ () {
   </div>
 </body>
 </html>  
+
+# jquery插件开发的集中方式
+https://www.cnblogs.com/ajianbeyourself/p/5815689.html
+
+# html5的data属性
+  <div id = 'read-haha' data-role='page' data-options='{"name":"John"}'></div>
+
+  如何读取data的属性
+  $('read-haha').data('role') // page
+  $('read-haha').data('options') // {"name":"John"}
