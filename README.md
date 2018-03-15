@@ -847,3 +847,6 @@ animation的快捷方式应用
 box-sizing: content-box; // 盒子宽度包含了border padding css width
 box-sizing: padding-box; // 盒子宽度包含了padding css width
 box-sizing: border-box; // 盒子宽度包含了border css width
+
+# 页面嵌套用layer插件的弹出iframe比较好
+http://layer.layui.com/
