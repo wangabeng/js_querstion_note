@@ -843,10 +843,33 @@ animation的快捷方式应用
   animation-play-state: paused;
 }
 
-# css3 防止浮动下落：(IE8及以上均支持)
-box-sizing: content-box; // 盒子宽度包含了border padding css width
-box-sizing: padding-box; // 盒子宽度包含了padding css width
-box-sizing: border-box; // 盒子宽度包含了border css width
+# css3 防止浮动下落：(IE8及以上均支持) box-sizing兼容写法
+  box-sizing: content-box; // 盒子宽度包含了border padding css width
+  box-sizing: padding-box; // 盒子宽度包含了padding css width
+  box-sizing: border-box; // 盒子宽度包含了border css width
 
-# 页面嵌套用layer插件的弹出iframe比较好
-http://layer.layui.com/
+  一般在全局样式里设置border-box属性
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+# 解决移动端点击事件延迟 用css属性 
+  touch-action: manipulation;
+  CSS属性 touch-action 用于指定某个给定的区域是否允许用户操作，以及如何响应用户操作（比如浏览器自带的划动、缩放等）。
+  我们平常说的移动端300ms延迟，就可以使用 touch-action: manipulation; 来解决。
+
+# 移动端手机滚动插件iscroll.js (官网)
+
+# jQuery上下滑动加载刷新插件 iscroll.js
+http://www.jq22.com/jquery-info6625
+
+# css shadow兼容性写法
+http://blog.csdn.net/xiaoya_syt/article/details/52370715
+
+.box_shadow{ 
+  background-color: #eee; 
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=135, Strength=5);/*for ie6,7,8*/ 
+  -moz-box-shadow:2px 2px 5px #969696;/*firefox*/ 
+  -webkit-box-shadow:2px 2px 5px #969696;/*webkit*/ 
+  box-shadow:2px 2px 5px #969696;/*opera或ie9*/ 
+}
