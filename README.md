@@ -873,3 +873,8 @@ http://blog.csdn.net/xiaoya_syt/article/details/52370715
   -webkit-box-shadow:2px 2px 5px #969696;/*webkit*/ 
   box-shadow:2px 2px 5px #969696;/*opera或ie9*/ 
 }
+
+# sublime设置多窗口展示
+https://zhidao.baidu.com/question/1111567668406221419.html
+Alt + Shift + 2 将视图设置成两列；
+然后拖动一个文件到右侧即可
