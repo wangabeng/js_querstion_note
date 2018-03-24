@@ -878,3 +878,20 @@ http://blog.csdn.net/xiaoya_syt/article/details/52370715
 https://zhidao.baidu.com/question/1111567668406221419.html
 Alt + Shift + 2 将视图设置成两列；
 然后拖动一个文件到右侧即可
+
+# 文字多行显示 溢出用省略号代替
+单行
+html
+<p style="width: 300px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+
+效果如图：
+文本的溢出显示省略号同学们......
+
+多行文本:
+  font-size: .2rem;
+  line-height: .3rem;
+  height: .9rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /*自动显示3行 多出的部分用...代替*/
