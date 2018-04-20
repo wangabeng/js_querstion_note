@@ -917,3 +917,6 @@ content有两个值”yes”和”no”,当我们需要显示工具栏和菜单�
 将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <!-- 可选default、black、black-translucent -->
+
+# 控制文本段落第一个字母的样式或缩进
+p:first-letter {margin-left: 2em; color: red} // css3是2个冒号p::first-letter IE8不支持2个冒号 CSS3继续支持单冒号 所以 可以继续使用单冒号
