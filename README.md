@@ -923,3 +923,21 @@ p:first-letter {margin-left: 2em; color: red} // css3是2个冒号p::first-lette
 
 # 三角形边线
 https://blog.csdn.net/qq_34645412/article/details/78062304
+
+# 自定义滚动条样式
+/* 滚动条样式 */
+.course-content-outer::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 4px;
+}
+.course-content-outer::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.2);
+}
+.course-content-outer::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+}
+/* 滚动条样式结束 */
