@@ -941,3 +941,6 @@ https://blog.csdn.net/qq_34645412/article/details/78062304
     background: rgba(0,0,0,0.1);
 }
 /* 滚动条样式结束 */
+
+# body设置高度100%的时候出的问题
+如果body的子元素加了margin-top 则margin-top传递给了body 导致出现滚动条 
