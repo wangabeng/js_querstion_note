@@ -1,7 +1,7 @@
 # js_querstion_note
 js相关问题记录
 
-# 需要反复看的JS书
+# 需要反复看的
 javascript高级程序设计
 javascript算法与结构
 
@@ -959,8 +959,7 @@ https://blog.csdn.net/qq_34645412/article/details/78062304
 element.currentStyle ? element.currentStyle : window.getComputedStyle(element, null)
 可以获取px小数点后的数值
 例：
-function getElementStyle(selector) {
-	var element = document.querySelector(selector);
+function getElementStyle(element) {
 	return element.currentStyle ? element.currentStyle : window.getComputedStyle(element, null);
 }
-getElementStyle('html') // 获取到样式集合
+getElementStyle($('.abc')[0]) // 获取到样式集合
