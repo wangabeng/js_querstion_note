@@ -944,3 +944,23 @@ https://blog.csdn.net/qq_34645412/article/details/78062304
 
 # body设置高度100%的时候出的问题
 如果body的子元素加了margin-top 则margin-top传递给了body 导致出现滚动条 
+
+# 单行 多行文本溢出省略号
+
+单行 html width: 70%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+
+效果如图： 文本的溢出显示省略号同学们......
+
+多行文本: font-size: .2rem; line-height: .3rem; height: .9rem; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; /自动显示3行 多出的部分用...代替/
+
+# jquery获取rem的值会丢失小数点后面的px大小
+参考： https://segmentfault.com/a/1190000009694995
+计算方法，精度损失来自于浏览器将rem转成px的过程。
+element.currentStyle ? element.currentStyle : window.getComputedStyle(element, null)
+可以获取px小数点后的数值
+例：
+function getElementStyle(selector) {
+	var element = document.querySelector(selector);
+	return element.currentStyle ? element.currentStyle : window.getComputedStyle(element, null);
+}
+getElementStyle('html') // 获取到样式集合
