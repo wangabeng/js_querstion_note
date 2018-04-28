@@ -959,7 +959,9 @@ https://blog.csdn.net/qq_34645412/article/details/78062304
 element.currentStyle ? element.currentStyle : window.getComputedStyle(element, null)
 可以获取px小数点后的数值
 例：
+<code>
 function getElementStyle(element) {
 	return element.currentStyle ? element.currentStyle : window.getComputedStyle(element, null);
 }
 getElementStyle($('.abc')[0]) // 获取到样式集合
+</code>
