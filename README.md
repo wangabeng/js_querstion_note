@@ -959,9 +959,52 @@ https://blog.csdn.net/qq_34645412/article/details/78062304
 element.currentStyle ? element.currentStyle : window.getComputedStyle(element, null)
 可以获取px小数点后的数值
 例：
+<pre>
 <code>
 function getElementStyle(element) {
 	return element.currentStyle ? element.currentStyle : window.getComputedStyle(element, null);
 }
 getElementStyle($('.abc')[0]) // 获取到样式集合
 </code>
+</pre>
+
+# html+jquery实现图片上传预览效果 完整代码：
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5上传单个图片预览</title>
+</head>
+<body>
+	<h3>请选择图片文件：JPG/GIF/PNG</h3>
+	<form name="form0" id="form0" >
+	<input type="file" name="file0" id="file0"/><br>
+	<img src="" id="img0" width="200px" height="auto">
+	</form>
+
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+	<script> 
+		$("#file0").change(function(){
+			var objUrl = getObjectURL(this.files[0]) ;
+			if (objUrl) {
+				$("#img0").attr("src", objUrl) ;
+			}
+		}) ;
+		//建立一个可存取到file的url
+		function getObjectURL(file) {
+			var url = null; 
+			if (window.createObjectURL!=undefined) { // basic
+				url = window.createObjectURL(file);
+			} else if (window.URL!=undefined) { // mozilla(firefox)
+				url = window.URL.createObjectURL(file);
+			} else if (window.webkitURL!=undefined) { // webkit or chrome
+				url = window.webkitURL.createObjectURL(file);
+			}
+			return url;
+		}
+	</script>
+</body>
+</html>
+
+
+
