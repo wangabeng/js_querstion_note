@@ -969,6 +969,7 @@ getElementStyle($('.abc')[0]) // 获取到样式集合
 </pre>
 
 # html+jquery实现图片上传预览效果 完整代码：
+<pre><code>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1005,6 +1006,6 @@ getElementStyle($('.abc')[0]) // 获取到样式集合
 	</script>
 </body>
 </html>
-
+</pre></code>
 
 
