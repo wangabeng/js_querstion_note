@@ -1055,4 +1055,5 @@ function getObjectURL(file) {
 </pre>
 </code>
 
-
+# 图片懒加载
+https://zhuanlan.zhihu.com/p/24057749
