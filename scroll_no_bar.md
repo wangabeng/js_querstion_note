@@ -1,5 +1,5 @@
-<pre>
-<code>
+## 不显示
+    滚动条 但是依然可以滚动
     <!DOCTYPE html>
     <html>
     <head>
@@ -27,5 +27,3 @@
     </body>
     </html>
 
-</pre>
-</code>
