@@ -1057,3 +1057,9 @@ function getObjectURL(file) {
 
 # 图片懒加载
 https://zhuanlan.zhihu.com/p/24057749
+
+# 应用CDN的问题
+This request has been blocked; the content must be served over HTTPS.
+https://segmentfault.com/q/1010000005872734/a-1020000005874533
+解决办法：
+对于同时支持HTTPS和HTTP的资源，引用的时候要把引用资源的URL里的协议头去掉，浏览器会自动根据当前是HTTPS还是HTTP来给资源URL补上协议头的，可以达到无缝切换。
