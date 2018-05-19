@@ -1090,3 +1090,47 @@ function locationDiffUrl () {
         window.location.href = "mbhome.html";
     }
 }
+
+# Chrome浏览器表单自动填充默认样式 显示黄色 非常难看
+样式分析
+之所以出现这样的样式, 是因为Chrome会自动为input增加如下样式.
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: rgb(250, 255, 189);
+    background-image: none;
+    color: rgb(0, 0, 0);
+}
+这个样式的优先级也比较高. 
+无法通过important覆盖(这就比较恶心了).
+解决方法：
+1. 关闭浏览器自带填充表单功能
+
+如果你的网站安全级别高一些, 可以直接关闭. 也不需要再调样式了.
+<!-- 对整个表单的设置 -->
+<form autocomplete="off">
+<!-- 单独对某个组件设置 -->
+<input type="text" autocomplete="off">
+<!-- 对整个表单的设置 -->
+<form autocomplete="off">
+<!-- 单独对某个组件设置 -->
+<input type="text" autocomplete="off">
+PS: 毕竟是一个很好的功能, 关了多不方便.
+
+2. 通过纯色的阴影覆盖底(huang)色
+input:-webkit-autofill {
+ -webkit-box-shadow: 0 0 0px 1000px white inset;
+ -webkit-text-fill-color: #333;
+}
+注: 这种只适用于纯色背景的输入框.
+
+3. 通过设置input样式动画
+推荐使用这种的. 因为基本上没有人会等那么久…
+<!-- 99999s 基本上就是一个无限长的时间 
+    通过延长增加自动填充背景色的方式, 是用户感受不到样式的变化
+-->
+input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-transition-delay: 99999s;
+        -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
+}
