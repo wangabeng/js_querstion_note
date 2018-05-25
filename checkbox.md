@@ -11,9 +11,9 @@ checkbox选中与取消选择
     <input type="button" id="CheckNo" value="全不选" />
     <input type="button" id="CheckRev" value="反选" />
 </form>
-    ```
+```
     想要实现的是全选，全不选和反选三种效果，其中需要特别注意的是全选按钮这里
-  ```
+```
 <script>
     $(function(){
         $("#CheckAll").click(function(){
@@ -29,7 +29,7 @@ checkbox选中与取消选择
         });
     });
 </script>
-    ```
+```
 请注意，现在使用的是prop(),如果使用attr(),那么就会出现下面这种情况：
 
 选择“全选”按钮后，正常；点击“全不选”，正常；当这个时候再去点击“全选”按钮时，发现代码那里的“checked”=checked,但是页面上没有显示出来；
