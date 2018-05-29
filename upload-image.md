@@ -1,5 +1,6 @@
 
 图片上传 浏览器 存储base 64位的图片
+```
 html:
     <div class="rechargeBox">
         <span>凭　　证：</span>
@@ -24,3 +25,4 @@ js:
             })
         })
     })
+```
