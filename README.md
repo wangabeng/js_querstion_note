@@ -1,7 +1,7 @@
 # js_querstion_note
 js相关问题记录
 
-# 需要反复看的
+# 需要反复
 javascript高级程序设计
 javascript算法与结构
 
@@ -1134,3 +1134,7 @@ input:-webkit-autofill,
         -webkit-transition-delay: 99999s;
         -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
 }
+
+## 资源预加载 摘自张鑫旭
+<link rel="prefetch" href="(url)">
+其实HTML5中有原生的预加载属性，名为prefetch和prerender
