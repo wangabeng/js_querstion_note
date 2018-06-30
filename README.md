@@ -1135,6 +1135,6 @@ input:-webkit-autofill,
         -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
 }
 
-## 资源预加载 摘自张鑫旭
+## 资源预加载 摘自张鑫旭（2018 此功能已经被谷歌启用 以后不要用这个功能了 谷歌浏览器自带预加载可能的链接）
 <link rel="prefetch" href="(url)">
 其实HTML5中有原生的预加载属性，名为prefetch和prerender
