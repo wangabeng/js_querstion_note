@@ -1138,3 +1138,16 @@ input:-webkit-autofill,
 ## 资源预加载 摘自张鑫旭（2018 此功能已经被谷歌启用 以后不要用这个功能了 谷歌浏览器自带预加载可能的链接）
 <link rel="prefetch" href="(url)">
 其实HTML5中有原生的预加载属性，名为prefetch和prerender
+
+## jquery对象绑定多个事件 jquery高版本支持
+```
+$("p").on({
+
+    mouseover:function(){$("body").css("background-color","lightgray");}, 
+
+    mouseout:function(){$("body").css("background-color","lightblue");}, 
+
+    click:function(){$("body").css("background-color","yellow");} 
+
+  });
+  ```
