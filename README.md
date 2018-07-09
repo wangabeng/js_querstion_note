@@ -1151,3 +1151,23 @@ $("p").on({
 
   });
   ```
+## 关于video手机端的几个问题
+1 手机端播放自动全屏的问题解决办法
+为video标签添加属性：
+```
+x5-playsinline="" playsinline="" webkit-playsinline=""
+```
+2 手机端设置了autoplay 无效的解决棒法
+本身就是为了尊重用户 在IOS或安卓关闭了video自动播放的问题
+如果在JS代码中 在开机后强行开启video
+如：
+```
+    setTimeout(function () {
+      $('video')[0].play();
+    }, 1000);
+```
+则会报错
+Uncaught (in promise) DOMException: play() failed because the user didn't interact with the document first.
+原因分析：只有用户点击播放按钮等行为才能触发video的播放方法。
+按照别人的说法：移动端必须要有用户交互才能播放的。
+你可以监听touchstart事件，触摸屏幕后应该就可以播放了。
