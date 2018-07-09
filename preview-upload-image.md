@@ -171,3 +171,6 @@ js:
 </script>
 </html>
 ```
+## 延伸
+利用FileReader和FormData实现图片预览和上传(base64转二进制文件)
+https://blog.csdn.net/hsany330/article/details/52575459
