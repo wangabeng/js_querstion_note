@@ -36,12 +36,14 @@
     }
 ```
 ### 4 创建image标签 把当前文件的地址给新创建的image标签
+```
  reader.onload = function (e) {
     // 图片地址为 e.target.result 
     var imageTag = '<img src="e.target.result">';
     // 然后把这个标签追加到DOM中
     
  }
+ ```
 
 --------------------------------
 图片上传 浏览器 存储base 64位的图片(20180709更新 每次只能上传一张)
