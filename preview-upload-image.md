@@ -1,10 +1,10 @@
-原理步骤：
-1 Dom中创建input标签( multiple="multiple"可以上传多张)
+## 原理步骤：
+### 1 Dom中创建input标签( multiple="multiple"可以上传多张)
 ```
 <input type="file" id="xdaTanFileImg"  multiple="multiple"  name="fileAttach" onchange="xmTanUploadImg(this)"/>
 ```
-2 为该input标签绑定onchange事件，并把该对象this传入。当文件上传的时候出发onchange事件函数。可以通过this.files获取到上传的类数组文件集合。
-3 遍历该类数组集合，每遍历一次的时候，创建一个var reader = new FileReader()文件读取对象。现在这个文件对象内容是空的 只有这个对象读入当前遍历的文件对象，即：
+### 2 为该input标签绑定onchange事件，并把该对象this传入。当文件上传的时候出发onchange事件函数。可以通过this.files获取到上传的类数组文件集合。
+### 3 遍历该类数组集合，每遍历一次的时候，创建一个var reader = new FileReader()文件读取对象。现在这个文件对象内容是空的 只有这个对象读入当前遍历的文件对象，即：
 ```
     var curFile = this.files[i]; // 当前的文件对象
     reader.readAsDataURL(file); 读入当前文件到该new FileReader()实例对象
@@ -35,7 +35,7 @@
 
     }
 ```
-4 创建image标签 把当前文件的地址给新创建的image标签
+### 4 创建image标签 把当前文件的地址给新创建的image标签
  reader.onload = function (e) {
     // 图片地址为 e.target.result 
     var imageTag = '<img src="e.target.result">';
