@@ -1,4 +1,49 @@
+原理步骤：
+1 Dom中创建input标签( multiple="multiple"可以上传多张)
+```
+<input type="file" id="xdaTanFileImg"  multiple="multiple"  name="fileAttach" onchange="xmTanUploadImg(this)"/>
+```
+2 为该input标签绑定onchange事件，并把该对象this传入。当文件上传的时候出发onchange事件函数。可以通过this.files获取到上传的类数组文件集合。
+3 遍历该类数组集合，每遍历一次的时候，创建一个var reader = new FileReader()文件读取对象。现在这个文件对象内容是空的 只有这个对象读入当前遍历的文件对象，即：
+```
+    var curFile = this.files[i]; // 当前的文件对象
+    reader.readAsDataURL(file); 读入当前文件到该new FileReader()实例对象
+才会触发：
+    reader.onloadstart = function (e) {  
+        console.log("开始读取....");  
+    }  
+    reader.onprogress = function (e) {  
+        console.log("正在读取中....");  
+    }  
+    reader.onabort = function (e) {  
+        console.log("中断读取....");  
+    }  
+    reader.onerror = function (e) {  
+        console.log("读取异常....");  
+    }
+    // 
+    reader.onload = function (e) {  
+        console.log("成功读取....");  
 
+        var imgstr='<img style="width:100px;height:100px;" src="'+e.target.result+'"/>';  
+        var oimgbox=document.getElementById("imgboxid");  
+        var ndiv=document.createElement("div");  
+
+        ndiv.innerHTML=imgstr;  
+        ndiv.className="img-div";  
+        oimgbox.appendChild(ndiv);  
+
+    }
+```
+4 创建image标签 把当前文件的地址给新创建的image标签
+ reader.onload = function (e) {
+    // 图片地址为 e.target.result 
+    var imageTag = '<img src="e.target.result">';
+    // 然后把这个标签追加到DOM中
+    
+ }
+
+--------------------------------
 图片上传 浏览器 存储base 64位的图片(20180709更新 每次只能上传一张)
 ```
 html:
