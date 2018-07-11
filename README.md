@@ -1171,3 +1171,12 @@ Uncaught (in promise) DOMException: play() failed because the user didn't intera
 原因分析：只有用户点击播放按钮等行为才能触发video的播放方法。
 按照别人的说法：移动端必须要有用户交互才能播放的。
 你可以监听touchstart事件，触摸屏幕后应该就可以播放了。
+
+## 解决动态添加元素绑定事件在ios上面失效
+动态append到页面中的新元素 绑定事件需要这样绑定
+// 'body'需要冒泡的元素 element 事件绑定的元素
+$('body').on('click',element,fn);
+但是在IOS系统上会无效 解决办法： 
+在绑定的元素上添加一段css属性即可：
+cursor:pointer
+
