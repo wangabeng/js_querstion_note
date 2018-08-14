@@ -1180,3 +1180,16 @@ $('body').on('click',element,fn);
 在绑定的元素上添加一段css属性即可：
 cursor:pointer
 
+## 解决jquery和zepto同时使用的冲突问题
+在jQuery引用完了后，调用下$.noConflict()，比如：
+```
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script>$.noConflict();</script>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+```
+之后在使用jQuery的$符号时，换成jQuery就行了，比如：
+```
+jQuery(document).ready(function(xxx) {
+    // 这里是使用 jQuery $ 的代码
+});
+```
