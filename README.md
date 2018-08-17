@@ -1193,3 +1193,30 @@ jQuery(document).ready(function(xxx) {
     // 这里是使用 jQuery $ 的代码
 });
 ```
+
+## CSS3中trasition和animation重复执行的问题
+
+每次触发动画的时候 
+首先取消动画 然后添加动画 此时动画只能执行一次（拿抽奖动画来讲 就是这样）
+问题根源：
+这是浏览器渲染机制导致的。
+页面等待js线程执行完毕，随后执行GUI线程渲染，而removeClass随后addClass这样的代码，对于GUI线程来说页面上没有任何改变，自然不会做任何动作。
+
+而设置了setTimeout之后，执行顺序为 js线程执行完毕 -> GUI线程渲染（此时页面的class已去除）-> 异步线程执行完毕 -> GUI线程渲染（此时页面的class已添加）
+
+在这样的机制下，如果你把removeClass和addClass同时放在setTimeout中，设置时间间隔大于一定时间（w3c标准是25ms,但实际能分辨的最小时间间隔会更小一点，因浏览器而异），也有同样的效果。
+
+解决方法1  增加一个GUI线程渲染的命令
+        $('.test1').removeClass('active');
+        $('.test1').width(); //  GUI线程渲染
+        $('.test1').addClass('active');
+
+解决方法2
+	用定时器
+        $('.test1').removeClass('active');
+        setTimeout(function () { // 3000毫秒后 让浏览器重新渲染完整个元素属性
+          $('.test1').addClass('active');
+        }, 3000);
+	
+
+
