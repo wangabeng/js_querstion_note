@@ -30,6 +30,24 @@ http://img.blog.csdn.net/20160312103011365
 
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
 
+# 关于this的指向问题
+记住2句话
+1 this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象
+2 
+```
+var o = {
+    a:10,
+    b:{
+        // a:12,
+        fn:function(){
+            console.log(this.a); 
+        }
+    }
+}
+o.b.fn(); //undefined 尽管对象b中没有属性a，这个this指向的也是对象b，因为this只会指向它的上一级对象，不管这个对象中有没有this要的东西。
+```
+https://www.cnblogs.com/pssp/p/5216085.html 这篇关于this的讲解 是最为浅显易懂的
+
 # 数组的forEach方法遍历 获取index索引值的方法
 var arr = ['a', 'b', 'c'];
 arr.forEach((item) => {
