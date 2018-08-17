@@ -1218,5 +1218,6 @@ jQuery(document).ready(function(xxx) {
           $('.test1').addClass('active');
         }, 3000);
 	
-
+## css3 animation-timing-function: cubic-bezier(.77,.19,.6,.95);
+设置CSS3的动画缓急函数 http://cubic-bezier.com
 
