@@ -1239,3 +1239,10 @@ jQuery(document).ready(function(xxx) {
 ## css3 animation-timing-function: cubic-bezier(.77,.19,.6,.95);
 设置CSS3的动画缓急函数 http://cubic-bezier.com
 
+# 为元素动态绑定事件 即为未来元素绑定事件
+```
+//这里的ParentEle是 thisEle的父辈元素或者祖先元素，ParentEle可以是document，也可以是body等。<br><br><br>//注意：如果此时调用的函数是外部定义好的函数，那在调用的时候不要加（），不然会跳过点击事件直接触发函数
+$("body").on("click", ".newBtn", function() {
+	alert('这里是动态元素添加的事件');
+}); //.newBtn是要绑定的元素
+```
