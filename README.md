@@ -1262,3 +1262,12 @@ cursor:pointer;
 } 
 2 仍然用click来触发点击事件。（亲测有效）
 
+# 解决苹果系统在移动端button按钮 或input type=button 按钮 颜色自动渐变的问题
+```
+/* 苹果手机上input的button颜色变蓝变绿 */
+input[type=button], input[type=submit], input[type=file], button {
+    cursor: pointer;
+    outline: 0px;
+    -webkit-appearance:none;
+}
+```
