@@ -1271,3 +1271,42 @@ input[type=button], input[type=submit], input[type=file], button {
     -webkit-appearance:none;
 }
 ```
+
+# 对象拷贝 深拷贝
+1 原生js深拷贝。通过递归，来拷贝深层的对象
+```
+var obj = {a:{b:10}};
+function deepCopy(obj){
+    if(typeof obj != 'object'){
+        return obj;
+    }
+    var newobj = {};
+    for ( var attr in obj) {
+        newobj[attr] = deepCopy(obj[attr]);
+    }
+    return newobj;
+}
+var obj2 = deepCopy(obj);
+obj2.a.b = 20;
+alert(obj.a.b); //10 
+```
+2 jQuery深拷贝$.extend(true,object1, object2);
+```
+// jQuery中$.extend(true,object1, object2);可以深拷贝对象
+var object1 = {
+a: 0,
+b: {
+    gg: 11,
+    mm: 22
+}
+};
+var object2 = {
+b: {
+    mm: 333
+},
+c: 100
+};
+$.extend(true,object1, object2); // object2保持不变 把object2中的属性拷贝或覆盖到object1中
+console.log('obj1', object1);
+console.log('obj2', object2);
+```
