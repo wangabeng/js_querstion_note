@@ -1246,3 +1246,19 @@ $("body").on("click", ".newBtn", function() {
 	alert('这里是动态元素添加的事件');
 }); //.newBtn是要绑定的元素
 ```
+事件代理遇到的问题：
+在IOS系统中点击不触发点击事件。解决方法：
+例如：
+```
+<div class="name">点我</div>
+$(document).on("click", ".name", function() {
+    alert("name");
+});
+```
+解决办法：
+1 给这个捕获事件的元素（即最终需要添加到点击事件本身的元素）添加一个CSS属性：
+.name{ 
+cursor:pointer; 
+} 
+2 仍然用click来触发点击事件。（亲测有效）
+
