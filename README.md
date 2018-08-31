@@ -1306,7 +1306,7 @@ b: {
 },
 c: 100
 };
-$.extend(true,object1, object2); // object2保持不变 把object2中的属性拷贝或覆盖到object1中
+$.extend(true,object1, object2); // object1保持不变 把object1中的属性拷贝或覆盖到object2中
 console.log('obj1', object1);
 console.log('obj2', object2);
 ```
