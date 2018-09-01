@@ -1293,6 +1293,7 @@ alert(obj.a.b); //10
 2 jQuery深拷贝$.extend(true,object1, object2);
 ```
 // jQuery中$.extend(true,object1, object2);可以深拷贝对象
+// 实际使用中默认参数
 var object1 = {
 a: 0,
 b: {
@@ -1300,13 +1301,19 @@ b: {
     mm: 22
 }
 };
+// 实际使用中传递的参数 用于覆盖默认参数
 var object2 = {
 b: {
     mm: 333
 },
 c: 100
 };
-$.extend(true,object1, object2); // object1保持不变 把object1中的属性拷贝或覆盖到object2中
+console.log('extend', $.extend(true,object1, object2));
+// $.extend(true,object1, object2); // object2保持不变 把object2中的属性拷贝或覆盖到object1中 最后使用object1的数据 相当于$.extend(true,object1, object2)返回的数据
 console.log('obj1', object1);
 console.log('obj2', object2);
+
 ```
+
+# jquery给一个元素直接设置data值 如 $('.aaa').data('deg', 30)与设置$('.aaa').attr('data-deg', 30)属性的区别
+前者在html中不会体现出data-deg的属性及值 后者则会提现在html中  data-deg='30' 注意 这个值是字符串
