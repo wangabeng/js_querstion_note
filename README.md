@@ -49,26 +49,34 @@ o.b.fn(); //undefined 尽管对象b中没有属性a，这个this指向的也是�
 https://www.cnblogs.com/pssp/p/5216085.html 这篇关于this的讲解 是最为浅显易懂的
 
 # 数组的forEach方法遍历 获取index索引值的方法
+```
 var arr = ['a', 'b', 'c'];
 arr.forEach((item) => {
 	console.log(item, arr.indexOf(item));
 }) // a 0
       b 1
       c 2
+```
+
 # jQuery方法扩展
 1 注册 
-	$.fn.extend({
-		tab: function () {
-			console.log('data');
-			// 加上this把自身返回 即把调用此方法的对象返回 this指 $('.test') 返回后即可实现链式调用 
-			// return this;  
-		}
-	});
+```
+$.fn.extend({
+	tab: function () {
+		console.log('data');
+		// 加上this把自身返回 即把调用此方法的对象返回 this指 $('.test') 返回后即可实现链式调用 
+		// return this;  
+	}
+});
+```
+
 2 调用 比如一个div.test调用（加上return后 可以实现链式调用）
+```
 $('.test').tab().css('background', 'red');
 等价于
 $('.test').tab();
 $('.test').css('background', 'red');
+```
 
 # sublime设置 tab为2个空格
 针对已经完成的文件设置方法：
@@ -76,6 +84,7 @@ $('.test').css('background', 'red');
 通用的设置方法：
 1. 菜单栏里点击 Preferences-> Setting-User
 2. 在弹出来的文本里，添加如下两行:
+```
 {
 
     // 注意只有一个大括号，如果之前有属性，如在之前的属性前确保有 ，(逗号)
@@ -86,8 +95,10 @@ $('.test').css('background', 'red');
     //把tab 转换成 空格
     "translate_tabs_to_spaces": true
 }
+```
 
 # encodeURL及encodeURLComponent的区别：
+```
 1 非转移字符：
 	字母：52个，十进制数字10个，ASCII标点符号8个 - _ . ! ~ * ' ( )
 2 除了㈠㈢的其他字符 包括空格 \ 等等
@@ -107,9 +118,11 @@ http://www.happymmall.com/product/
 http://localhost:8080/product/list.do?pageNum=1&pageSize=10&orderBy=default&categoryId=100009
 就匹配到下面网址的内容了：
 http://www.happymmall.com/product/list.do?pageNum=1&pageSize=10&orderBy=default&categoryId=100008
+```
 
 # 解决html文件更改 不能刷新的问题
 参考： http://coding.imooc.com/learn/questiondetail/6266.html
+```
 1 webpack.config.json文件的 output对象配置
  publicPath: '/dist' 
 2 package.json配置script：
@@ -122,6 +135,7 @@ http://www.happymmall.com/product/list.do?pageNum=1&pageSize=10&orderBy=default&
     port: 8080,
     noInfo : true
   },*/
+  ```
 
 # 解决bash命令行ctrl+c不能杀死node进程的问题（2个进程 ctrl+c只能杀死一个进程，导致再次启动dev-server的时候无法开启服务）
 解决方法 用系统自带的命令行工具 ctrl+c即可停止node进程
@@ -130,7 +144,8 @@ http://www.happymmall.com/product/list.do?pageNum=1&pageSize=10&orderBy=default&
 (?<=exp)也叫零宽度正回顾后发断言，它断言自身出现的位置的前面能匹配表达式exp。比如(?<=\bre)\w+\b会匹配以re开头的单词的后半部分(除了re以外的部分)，例如在查找reading a book时，它匹配ading。
 
 # 一个函数理清call和apply的区别
-用法  
+用法
+```
 oneDefinedFuntionName.apply(this[or some object], arguments[is an array]) // call用法
 oneDefinedFuntionName.call(this[or some object], arguments[0], arguments[1]) // apply用法
 function test (a, b) {
@@ -148,8 +163,10 @@ function sum (c, d) {
   console.log(test.apply(this, c, d));
 } 
 sum(5, 6); // 11
+```
 
 # 关于设备像素比
+```
 http://yunkus.com/physical-pixel-device-independent-pixels/
 设备像素比的实际意义
 Dec 17, 2016
@@ -174,9 +191,11 @@ window.devicePixelRatio是设备上物理像素和设备独立像素(device-inde
 UI设计师按照手机物理像素出设计稿，切图时根据其设备像素比来换算设备独立像素（CSS像素），比如视网膜手机iPhone6，物理像素750px×1334px，由于其设备像素比为2，CSS切图时需要将设计稿的所有尺寸除以2，才是正确CSS像素值。
 
 https://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html
+```
 
 # 正则中^的含义
 http://blog.csdn.net/sufubo/article/details/50990684
+```
 正则表达式中的"^"这个符号的一些思考
 1 /^A/会匹配"An e"中的A，但是不会匹配"ab A"中的A
 2 
@@ -200,8 +219,9 @@ var str='http://runjie.benkid.cn/api/find?contentName=service&curPage=1&pageCapa
 var reg = /\?(\w+=\w+($|&)?)+(#|$)?/g;
 var sum = str.match(reg);
 console.log(sum); // ["?contentName=service&curPage=1&pageCapacity=8&sort=id#"]
+```
 
-#秒懂原型链
+# 秒懂原型链
 http://blog.csdn.net/u012468376/article/details/53121081
 http://blog.csdn.net/u012468376/article/details/53127929
 
@@ -218,6 +238,7 @@ object
 RegExp Global Date Math 
 
 # null和undefined区别
+```
 都是基本数据类型 区别是 
 null 是一个空的对象指针，是空值 typeof null // object
 可以自动转化为0
@@ -244,6 +265,7 @@ i; //undefined
 
   var x = f();
   x;  //undefined
+```  
 
 # js中new的作用
 1 创建了一个实例对象
@@ -255,6 +277,7 @@ i; //undefined
 2 给该对象的prototype模式给对象添加属性和方法
 
 # 手写ajax实现
+```
 // 1 创建一个XHR对象
 var xhr = new XMLHttpRequest();
 // 2 打开网页
@@ -282,16 +305,19 @@ status
 3XX 需要重定向 浏览器直接跳转
 4xx 客户端请求错误 404 找不到
 5XX 服务端错误
+```
 
 # 浏览器理解
 浏览器是直接在用户端使用的 实现和用户交互 所以浏览器在前端扮演很重要的角色
 
 #浏览器内核
+```
 Trident(IE内核 )
 Gecko(Firefo内核) // 会自动更新 一般不会出现兼容性问题
 Blink(Google和Opera SOftware内核)
 Webkit(Safari内核 Chrome内核原型， 开源)
 Presto(Opera前内核 现在已经废弃了)
+```
 
 # css样式权重
 !important > 内嵌样式 > ID > class >tagname | 伪类 | 属性选择器 > 伪对象 > 继承 > 通配符
@@ -299,6 +325,7 @@ css代码存放位置查看优先级
 内嵌样式 > 内部样式表 > 外联样式表
 
 # html5的新特性
+```
 a 拖拽释放 (Drag and drop) API
 b 语义化更好的内容标签 header nav footer aside article section
 c 音频 视频 audio video
@@ -308,6 +335,7 @@ f 本地离线存储 localStorage
 g sessionStorage 关闭浏览器后会自动删除
 h 表单控件 calendar data time email url search
 i 新的技术 webworker websocket Geolocation
+```
 
 # h5移除了哪些元素
 1 纯表现的元素 basefont big center font s strike tt u
@@ -332,6 +360,7 @@ css放在head中 减少请求
 用最简单的方式布局
 
 # css2实现一个元素水平居中和垂直居中对齐
+```
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -377,8 +406,10 @@ css放在head中 减少请求
 
   </body>
   </html>
+```
 
   通过css3实现(可以用flex布局)
+  ```
   <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -410,6 +441,7 @@ css放在head中 减少请求
 
 </body>
 </html>
+```
 
 # 一面 上限
 ajax请求原理
@@ -422,10 +454,13 @@ http://v.youku.com/v_show/id_XMjk3MzgyMTU4MA==.html?spm=a2h0k.8191407.0.0&from=s
 
 # json深拷贝
 方法1
+```
 function cloneJson (json) {
   return JSON.parse(JSON.stringify(json));
 }
+```
 方法2
+```
 function clone (json) {
   var isArray = json instanceof Array;
   var _json = isArray? []: {};
@@ -434,8 +469,10 @@ function clone (json) {
   }
   return _json;
 }
+```
 
 # css盒子模型
+```
 盒子模型包括border padding width height
 比如：
 <div>
@@ -443,6 +480,7 @@ function clone (json) {
 </div>
 设置width:150px height: 150
 在低版本的IE（5 6）中 高度会被文字撑开 实际高度会大于150px(兼容性问题)
+```
 
 # 导致产生跨域问题的三个条件
 1 浏览器限制
@@ -455,6 +493,7 @@ https://segmentfault.com/a/1190000006599500
 # 正则子项匹配
 需求： 把字符串转成驼峰命名 例如 ben-wang-haha 转成benWangHaha
 用正则子项
+```
 var str = 'ben-wang-haha';
 function change (str) {
   var reg = /-(\w)/g;
@@ -464,8 +503,10 @@ function change (str) {
   })
 }
 console.log(change(str)); // benWangHaha
+```
 
 # 如何遍历出26个字母
+```
   <script>
   for(var i=0;i<26;i++){
       document.write(String.fromCharCode(65+i));//输出A-Z  26个大写字母
@@ -474,17 +515,20 @@ console.log(change(str)); // benWangHaha
       document.write(String.fromCharCode(97+i));//输出a-z  26个小写字母
   }
   </script>
+```
 
 # 需求123456789 变成 123,456,789
+```
 var str = '123456789';
 function change (str) {
   return str.replace(/(?!(?=\b))(?=(\d{3})+$)/g, ',');
 }
 
 console.log(change(str));
-
+```
 
 # 正则里如何使用变量
+```
 var str = 'ssgggaaaassssbsssss';
 function change (str) {
   var regN = 's';
@@ -492,6 +536,7 @@ function change (str) {
   return str.match(reg).length;
 }
 console.log(change(str)); // benWangHaha
+```
 
 # 正则表达式简明教程 
   https://deerchao.net/tutorials/regex/regex.htm
@@ -511,6 +556,7 @@ console.log(change(str)); // benWangHaha
 9 事件节流.
 
 # 原型链问题
+```
   var F = function(){}
   Object.prototype.a = function(){
     console.log('a()')
@@ -601,9 +647,11 @@ console.log(getAge)  //ƒ () {
   getAge() // ?50 X     10 v
   new Person.getAge() // ?20
   new Person().getAge() // ?30  
+```
 
 # 滴滴难题
   https://www.cnblogs.com/foolgry/p/5309192.html
+  ```
   function fun(n, o) {
     console.log(o)
     return {
@@ -660,16 +708,17 @@ console.log(getAge)  //ƒ () {
   });
   book.year = 2008; // set函数是在写入'year'的时候调用
   console.log(book._year); // 2008  
+```
 
 # 父元素高度设置为min-height后 子元素的height 100%无效 why?
   父及元素 div 设置 min-height:400px; 
   子元素 div设置 height:100%； 
   奇怪的是子元素的100%并没有把400px继承过来，100%的高度设置失效
-
+```
   <div style="min-height:400px; background:#000;" class="a1">
     <div style="height:100%; background:#fff;" class="b1"></div>
   </div>
-
+```
   原因：min-height 是在 height 计算之后再套用的。在计算容器 height 时，默认值为 auto，故由其内容决定。这种情况下子元素百分比的 height 都会当作 auto 处理。例子中算出子元素高度 0，于是容器得到 height 为 0，比 min-height 小，所以最后容器应用 min-height。
 
   总结：height 100%失效原因 
@@ -677,12 +726,14 @@ console.log(getAge)  //ƒ () {
   2 父级没有加定位 fixed absolute等
 
 # 子元素margin-top属性传递给父元素的问题  
+```
   html结构：
   <div class="box1"><div class="box1_1"></div></div>
 
   css样式：
   .box1{height:400px;background:#fad;}
   .box1_1{height:100px;margin-top:50px;background:#ade;}
+```
   解决办法：
   1.修改父元素的高度，增添padding-top样式模拟（常用）；// 这样总高度会增加 不可取
   2.为父元素添加overflow:hidden;样式即可（完美）；// 总高度不会增加 可取 很完美 或则用clearfix清除伪类
@@ -700,6 +751,7 @@ console.log(getAge)  //ƒ () {
 
 # stickerfoot布局 出自慕课的饿了吗App项目：
   代码如下
+```  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -757,16 +809,19 @@ console.log(getAge)  //ƒ () {
   </div>
 </body>
 </html>  
+```
 
 # jquery插件开发的集中方式
 https://www.cnblogs.com/ajianbeyourself/p/5815689.html
 
 # html5的data属性
-  <div id = 'read-haha' data-role='page' data-options='{"name":"John"}'></div>
+ ```
+ <div id = 'read-haha' data-role='page' data-options='{"name":"John"}'></div>
 
   如何读取data的属性
   $('read-haha').data('role') // page
   $('read-haha').data('options') // {"name":"John"}
+```
 
 # chorme强制刷新页面快捷键
 普通刷新 ctrl + r
@@ -780,6 +835,7 @@ https://www.cnblogs.com/ajianbeyourself/p/5815689.html
 
 # 几个重要的CSS3应用
 1 transfrom 放大缩小等变换 这个变换是瞬间完成的 比如 当鼠标移入的时候 从一种状态变换到另外一种状态 没有过渡的效果 瞬间完成 需要触发 比如鼠标悬停的时候触发
+```
   transform: rotate(10deg) // 旋转10度  
   transform: scale(2) 
   transform: scale(2) 
@@ -788,11 +844,13 @@ https://www.cnblogs.com/ajianbeyourself/p/5815689.html
   transform: skew(0, 45deg) // 水平或竖直方向倾斜一定位置
 
   transform-origin: 0 0  或者 right bottom 或者 0% 0%  // 设置中心点
+```
 
 2 transition 设置在一定时间内 一组CSS属性变换到另一组属性的动画展示过程
 例如 设置一个横幅在2秒内旋转360度。和tranform区别就是有动画过渡效果。  
 这个动画需要触发 比如鼠标悬停 等
 示例：
+```
 .test {
   color: red;
   background-color: green;
@@ -816,6 +874,7 @@ transition快捷设置方法:
   color: blue;
   background-color: yellow;
 }
+```
 
 3 animation动画 不需要触发
 创建动画的2个步骤：
@@ -824,6 +883,7 @@ transition快捷设置方法:
 示例：
 让一个元素从不显示到淡入视图
 第一步： 定义动画
+```
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -837,6 +897,7 @@ transition快捷设置方法:
     opacity: 1;
   }
 }
+```
 第二步： 应用动画
 .test {
   animation-name: fadeIn;
@@ -883,7 +944,7 @@ http://www.jq22.com/jquery-info6625
 
 # css shadow兼容性写法
 http://blog.csdn.net/xiaoya_syt/article/details/52370715
-
+```
 .box_shadow{ 
   background-color: #eee; 
   filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=135, Strength=5);/*for ie6,7,8*/ 
@@ -891,6 +952,7 @@ http://blog.csdn.net/xiaoya_syt/article/details/52370715
   -webkit-box-shadow:2px 2px 5px #969696;/*webkit*/ 
   box-shadow:2px 2px 5px #969696;/*opera或ie9*/ 
 }
+```
 
 # sublime设置多窗口展示
 https://zhidao.baidu.com/question/1111567668406221419.html
@@ -898,6 +960,7 @@ Alt + Shift + 2 将视图设置成两列；
 然后拖动一个文件到右侧即可
 
 # 文字多行显示 溢出用省略号代替
+```
 单行
 html
 <p style="width: 300px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
@@ -913,8 +976,10 @@ html
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3; /*自动显示3行 多出的部分用...代替*/
-  
+```
+
 # 移动端小结--正常网站都会用到的东西
+```
 H5页面窗口自动调整到设备宽度，并禁止用户缩放页面
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 
@@ -935,14 +1000,18 @@ content有两个值”yes”和”no”,当我们需要显示工具栏和菜单�
 将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <!-- 可选default、black、black-translucent -->
+```
 
 # 控制文本段落第一个字母的样式或缩进
+```
 p:first-letter {margin-left: 2em; color: red} // css3是2个冒号p::first-letter IE8不支持2个冒号 CSS3继续支持单冒号 所以 可以继续使用单冒号
+```
 
 # 三角形边线
 https://blog.csdn.net/qq_34645412/article/details/78062304
 
 # 自定义滚动条样式
+```
 /* 滚动条样式 */
 .course-content-outer::-webkit-scrollbar {/*滚动条整体样式*/
     width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
@@ -959,17 +1028,19 @@ https://blog.csdn.net/qq_34645412/article/details/78062304
     background: rgba(0,0,0,0.1);
 }
 /* 滚动条样式结束 */
+```
 
 # body设置高度100%的时候出的问题
 如果body的子元素加了margin-top 则margin-top传递给了body 导致出现滚动条 
 
 # 单行 多行文本溢出省略号
-
+```
 单行 html width: 70%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 
 效果如图： 文本的溢出显示省略号同学们......
 
 多行文本: font-size: .2rem; line-height: .3rem; height: .9rem; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; /自动显示3行 多出的部分用...代替/
+```
 
 # jquery获取rem的值会丢失小数点后面的px大小
 参考： https://segmentfault.com/a/1190000009694995
@@ -977,6 +1048,7 @@ https://blog.csdn.net/qq_34645412/article/details/78062304
 element.currentStyle ? element.currentStyle : window.getComputedStyle(element, null)
 可以获取px小数点后的数值
 例：
+```
 <pre>
 <code>
 function getElementStyle(element) {
@@ -985,10 +1057,10 @@ function getElementStyle(element) {
 getElementStyle($('.abc')[0]) // 获取到样式集合
 </code>
 </pre>
+```
 
 # html+jquery实现图片上传预览效果 完整代码：
-<pre>
-<code>
+```
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1025,7 +1097,9 @@ getElementStyle($('.abc')[0]) // 获取到样式集合
 	</script>
 </body>
 </html>
+```
 
+```
 <!DOCTYPE html>  
 <html>  
 <head>  
@@ -1069,9 +1143,7 @@ function getObjectURL(file) {
 </body>  
 </html>  
 
-
-</pre>
-</code>
+```
 
 # 图片懒加载
 https://zhuanlan.zhihu.com/p/24057749
@@ -1083,6 +1155,7 @@ https://segmentfault.com/q/1010000005872734/a-1020000005874533
 对于同时支持HTTPS和HTTP的资源，引用的时候要把引用资源的URL里的协议头去掉，浏览器会自动根据当前是HTTPS还是HTTP来给资源URL补上协议头的，可以达到无缝切换。
 
 # 根据手机客户端浏览器跳转不同的页面
+```
 function locationDiffUrl () {
     var browser = {
         versions: function () {
@@ -1108,15 +1181,18 @@ function locationDiffUrl () {
         window.location.href = "mbhome.html";
     }
 }
+```
 
 # Chrome浏览器表单自动填充默认样式 显示黄色 非常难看
 样式分析
 之所以出现这样的样式, 是因为Chrome会自动为input增加如下样式.
+```
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     background-color: rgb(250, 255, 189);
     background-image: none;
     color: rgb(0, 0, 0);
 }
+```
 这个样式的优先级也比较高. 
 无法通过important覆盖(这就比较恶心了).
 解决方法：
@@ -1142,6 +1218,7 @@ input:-webkit-autofill {
 
 3. 通过设置input样式动画
 推荐使用这种的. 因为基本上没有人会等那么久…
+```
 <!-- 99999s 基本上就是一个无限长的时间 
     通过延长增加自动填充背景色的方式, 是用户感受不到样式的变化
 -->
@@ -1152,6 +1229,7 @@ input:-webkit-autofill,
         -webkit-transition-delay: 99999s;
         -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
 }
+```
 
 ## 资源预加载 摘自张鑫旭（2018 此功能已经被谷歌启用 以后不要用这个功能了 谷歌浏览器自带预加载可能的链接）
 <link rel="prefetch" href="(url)">
