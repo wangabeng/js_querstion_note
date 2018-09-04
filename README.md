@@ -4,8 +4,8 @@ javascript算法与结构
 
 算法导论
 
-//
-js中, apply方法简单理解：
+# js中, apply方法简单理解：
+```
 Function.apply(obj,args)方法能接收两个参数
 
 obj：这个对象将代替Function类里this对象。此语句声明后 obj对象就可以调用Function这个方法
@@ -23,7 +23,7 @@ Math.max内部不依赖this，所以你的例子没有差别；下面的代码�
 http://img.blog.csdn.net/20160312103011365
 
 第一个参数是你调用这个函数的对象，在es5 的严格模式下，调用函数必须指定调用对象。不是严格模式没要求。你传math就相当于math对象调用这个方法，你传window相当于window调用这个方法。其实这里没区别，你直接传null也是可以的。
-
+```
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
 
 # 关于this的指向问题
