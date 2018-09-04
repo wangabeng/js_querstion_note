@@ -1373,8 +1373,78 @@ new constructFn({
 	}
 });
 ```
-# 关于gulp非常全面的介绍
-https://www.cnblogs.com/2050/p/4198792.html
+# gulp项目中运用：
+## 主要用途：项目中文件的压缩
+## 使用步骤
+### 1 安装NodeJS
+### 2 安装Gulp环境
+```
+$ npm install --global gulp
+```
+### 3 作为项目的开发依赖（devDependencies）安装
+```
+$ npm install --save-dev gulp
 
-# gulp和webpack是互补的 而不是互斥的 关于他们之间的区别 见
+```
+### 4 安装工具依赖
+```
+ npm install gulp-minify-css gulp-uglify gulp-concat gulp-rename gulp-jshint del --save-dev
+
+ /////////////////
+
+ 1.css压缩 　　gulp-minify-css
+ 2.js压缩　　　gulp-uglify
+ 3.css或js合并　　　gulp-concat　
+ 4.重命名　　   gulp-rename
+ 5.js代码检测　 gulp-jslint　(或tgulp-jshint)
+ 6.文件删除    del
+```
+### 5 在根目录中创建gulpfile.js
+```
+ var gulp = require('gulp'),
+ minifycss = require('gulp-minify-css'),
+     concat = require('gulp-concat'),
+     uglify = require('gulp-uglify'),
+     rename = require('gulp-rename'),
+     del = require('del');
+
+
+ //压缩css
+ gulp.task('minify_css', function () {
+     var cssSrc = ['./css/*.css'];
+
+     return gulp.src(cssSrc)      //压缩的文件
+         .pipe(concat('all.css'))    //合并所有css到all.css
+         .pipe(gulp.dest('./main/css'))   //输出文件夹
+         // .pipe(rename({suffix: '.min'}))
+         .pipe(minifycss())
+         .pipe(gulp.dest('./main/css')); //执行压缩
+ });
+
+
+ //压缩js
+ gulp.task('minify_js', function() {
+     var jsSrc = ['./lib/*.js','!./lib/*.src.js'];
+
+     return gulp.src(jsSrc)
+         .pipe(concat('all.js'))    //合并所有js到all.js
+         .pipe(gulp.dest('./lib'))    //输出all.js到文件夹
+         .pipe(rename({suffix: '.min'}))   //rename压缩后的文件名
+         .pipe(uglify())    //压缩
+         .pipe(gulp.dest('./lib'));  //输出
+ });
+
+  // 默认任务
+ gulp.task('default',['minify_css','minify_js']);
+```
+### 6 在命令行工具中执行
+```
+gulp
+```
+### 7 检查压缩文件，是否正常
+
+备注：
+1 关于gulp非常全面的介绍
+https://www.cnblogs.com/2050/p/4198792.html
+2 gulp和webpack是互补的 而不是互斥的 关于他们之间的区别 见
 https://www.cnblogs.com/iovec/p/7921177.html
