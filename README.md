@@ -1317,3 +1317,60 @@ console.log('obj2', object2);
 
 # jquery给一个元素直接设置data值 如 $('.aaa').data('deg', 30)与设置$('.aaa').attr('data-deg', 30)属性的区别
 前者在html中不会体现出data-deg的属性及值 后者则会提现在html中  data-deg='30' 注意 这个值是字符串
+
+# 抽奖案例中关于call的改变this指向的使用 配合ajax请求异步使用数据
+1 定义构造函数，定义属性及方法:
+```
+// js部分
+(function (window, document, $) {
+	var defaultOpts = {
+		callback: function () {}
+	};
+	function constructFn (opts) {
+		this.opts = $.extend(true, defaults, opts); // 覆盖参数
+		this.init();
+	}
+	// 初始化 在构造函数中执行
+	constructFn.prototype.init = function () {
+		// 使用opts对象中的方法 并且改变在使用callback这个函数环境中this的指向
+		this.opts.callback.call(this); // 执行这个callback方法
+	}；
+	// 在回调函数中执行 没有在构造函数中执行
+	constructFn.prototype.dosomething = function (msg) {
+		alert(msg);
+	};
+)(widonw, document, $);
+```
+使用：
+1 引用此js文件
+2 使用方法
+```
+new constructFn({
+	// 定义callback
+	callback: function () {
+		var _this = this;
+		// 发送ajax请求 然后在回调中使用此实例对象的方法 dosomething
+		$.ajax({
+		    url:'/comm/test1.php',
+		    type:'POST', //GET
+		    async:true,    //或false,是否异步
+		    data:{
+			name:'yang',age:25
+		    },
+		    success:function(data,textStatus,jqXHR){
+			console.log(data);
+			console.log(textStatus);
+			console.log(jqXHR);
+			// 在回调中使用此实例对象的方法 dosomething(按理说是不可以直接用_this.dosomething使用的 ，但是因为在这里_this的指向已经改变，_this指向的已经不是这个opts对象，而是这个constructFn实例化对象，这个实例化对象有dosomething方法)
+			_this.dosomething(data); // 把ajax请求获取的数据传递过去
+		    },
+		    error:function(xhr,textStatus){
+			console.log('错误')
+			console.log(xhr)
+			console.log(textStatus)
+		    },
+		})
+	}
+});
+```
+
