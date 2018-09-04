@@ -1,12 +1,8 @@
-# js_querstion_note
-js相关问题记录
-
 # 需要反复
 javascript高级程序设计
 javascript算法与结构
 
-计算机专业书
-<<算法导论>>
+算法导论
 
 //
 js中, apply方法简单理解：
