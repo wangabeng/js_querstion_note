@@ -1,4 +1,4 @@
-sublime 自动添加兼容前缀插件autoprefixer
+# sublime 自动添加兼容前缀插件autoprefixer
 
 ```
 安装插件autoprefixer步骤：
@@ -57,3 +57,33 @@ Firefox <= 20	火狐<=20
 iOS 7	指定IOS 7浏览器
 更多请参考：https://github.com/ai/browserslist#queries
 ```
+
+# sublime设置 tab为2个空格
+针对已经完成的文件设置方法：
+查看-把使用空格缩进 勾选 标签宽度为2勾选
+通用的设置方法：
+1. 菜单栏里点击 Preferences-> Setting-User
+2. 在弹出来的文本里，添加如下两行:
+```
+{
+
+    // 注意只有一个大括号，如果之前有属性，如在之前的属性前确保有 ，(逗号)
+
+    //把 tab 转换成4个空格
+    "tab_size": 4,
+
+    //把tab 转换成 空格
+    "translate_tabs_to_spaces": true
+}
+```
+
+# sublime设置多窗口展示
+https://zhidao.baidu.com/question/1111567668406221419.html
+Alt + Shift + 2 将视图设置成两列；
+然后拖动一个文件到右侧即可
+
+# sublime 设置sass语法高亮
+1 下载插件包
+https://github.com/kuroir/SCSS.tmbundle/zipball/SublimeText2
+2 拷贝至 \Sublime Text3\Data\Packages（或打开sublime的首选项-浏览插件）
+3 重新启动即可
