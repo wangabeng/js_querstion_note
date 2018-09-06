@@ -86,25 +86,6 @@ $('.test').tab();
 $('.test').css('background', 'red');
 ```
 
-# sublime设置 tab为2个空格
-针对已经完成的文件设置方法：
-查看-把使用空格缩进 勾选 标签宽度为2勾选
-通用的设置方法：
-1. 菜单栏里点击 Preferences-> Setting-User
-2. 在弹出来的文本里，添加如下两行:
-```
-{
-
-    // 注意只有一个大括号，如果之前有属性，如在之前的属性前确保有 ，(逗号)
-
-    //把 tab 转换成4个空格
-    "tab_size": 4,
-
-    //把tab 转换成 空格
-    "translate_tabs_to_spaces": true
-}
-```
-
 # encodeURL及encodeURLComponent的区别：
 ```
 1 非转移字符：
@@ -961,11 +942,6 @@ http://blog.csdn.net/xiaoya_syt/article/details/52370715
   box-shadow:2px 2px 5px #969696;/*opera或ie9*/ 
 }
 ```
-
-# sublime设置多窗口展示
-https://zhidao.baidu.com/question/1111567668406221419.html
-Alt + Shift + 2 将视图设置成两列；
-然后拖动一个文件到右侧即可
 
 # 文字多行显示 溢出用省略号代替
 ```
