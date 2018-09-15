@@ -1525,3 +1525,13 @@ https://www.cnblogs.com/iovec/p/7921177.html
     });
 ```
 content: $('.logistics-detail-layer') // 这里不要写成$('.logistics-detail-layer').html() ，然后即可在关闭的时候获取input框的value值。
+
+# 自定义layer弹出层
+1 遮罩层
+```
+position: fixed; z-index: 1000;width:100%;height: 100%;opcacity: .3;background: #000
+```
+2 内容层  
+```
+position: fixed;width: 4rem;height: 40$;left: 50%;top: 50%;margin-left: -50%宽度;margin-top: -50%高度;
+```
