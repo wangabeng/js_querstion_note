@@ -1510,3 +1510,18 @@ gulp
 https://www.cnblogs.com/2050/p/4198792.html
 2 gulp和webpack是互补的 而不是互斥的 关于他们之间的区别 见
 https://www.cnblogs.com/iovec/p/7921177.html
+
+# layer不能获取弹出层input框的value值的解决方案
+```
+    $('.add-one').on('click', function () {
+	//页面层
+	curLayer = layer.open({
+	    title: '添加物流信息',
+	    type: 1,
+	    // skin: 'layui-layer-rim', //加上边框
+	    area: ['5rem', '50%'], //宽高
+	    content: $('.logistics-detail-layer') // 这里不要写成$('.logistics-detail-layer').html() 
+	});
+    });
+```
+content: $('.logistics-detail-layer') // 这里不要写成$('.logistics-detail-layer').html() ，然后即可在关闭的时候获取input框的value值。
