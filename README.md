@@ -1550,3 +1550,38 @@ objectSayColor(); //blue
 在这里，sayColor()调用bind()并传入对象o，创建了objectSayColor()函数。objectSayColor()函数的this值等于o，因此即使是在全局作用域中调用这个函数，也会看到“blue”。
 支持bind()方法的浏览器有IE9+、Firefox 4+、Safari 5.1+、Opera 12+和Chrome。
 
+# 一个简单的css3动画 类似手风情菜单箭头向右 向下切换效果
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script  src="https://code.jquery.com/jquery-2.2.4.js"  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="  crossorigin="anonymous"></script>
+  <style>
+    .test {width: 30px;height: 300px;background-color: red;margin: 0 auto;
+      -webkit-transition: all 0.4s ease;
+      -o-transition: all 0.4s ease;
+      /* 元素本身添加动画 没有触发的时候 动画不显示 */
+      transition: transform 0.4s ease; 
+    }
+    .open {
+      background-color: blue;
+      -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body>
+<div class="test">123233</div>
+<input type="button" class='btn' value='chufa'>
+<script>
+$('.btn').on('click', function () {
+  $('.test').toggleClass('open');
+});
+</script>
+</body>
+</html>
+```
