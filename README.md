@@ -1535,3 +1535,17 @@ position: fixed; z-index: 1000;width:100%;height: 100%;opcacity: .3;background: 
 ```
 position: fixed;width: 4rem;height: 40$;left: 50%;top: 50%;margin-left: -50%宽度;margin-top: -50%高度;
 ```
+
+# bind方法（高程）
+ECMAScript 5还定义了一个方法：bind()。这个方法会创建一个函数的实例，其this值会被绑定到传给bind()函数的值。
+```
+window.color = 'red';
+var o = { color: 'blue' };
+function sayColor(){
+alert(this.color);
+}
+var objectSayColor = sayColor.bind(o);
+objectSayColor(); //blue
+```
+在这里，sayColor()调用bind()并传入对象o，创建了objectSayColor()函数。objectSayColor()函数的this值等于o，因此即使是在全局作用域中调用这个函数，也会看到“blue”。
+
