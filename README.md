@@ -1548,4 +1548,5 @@ var objectSayColor = sayColor.bind(o);
 objectSayColor(); //blue
 ```
 在这里，sayColor()调用bind()并传入对象o，创建了objectSayColor()函数。objectSayColor()函数的this值等于o，因此即使是在全局作用域中调用这个函数，也会看到“blue”。
+支持bind()方法的浏览器有IE9+、Firefox 4+、Safari 5.1+、Opera 12+和Chrome。
 
