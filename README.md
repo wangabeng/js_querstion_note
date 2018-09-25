@@ -1587,3 +1587,12 @@ $('.btn').on('click', function () {
 ```
 
 # cnd库地址 https://cdnjs.com
+
+# 技术栈 
+基本 html5 css3 javascript  
+图形 svg 3d.js  
+服务端 node php（thinkphp） java  
+数据库 mysql  
+前端框架 vue react  
+混合app cordova reactnative  
+
