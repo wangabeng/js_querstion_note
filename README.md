@@ -1632,3 +1632,14 @@ $('.btn').on('click', function () {
 ```
 标屏分辨率宽屏分辨率QVGA320×240WQVGA400×240VGA640×480WVGA800×480SVGA800×600WSVGA1024×600XGA1024×768WXGA1280×768/800SXGA1280×1024WXGA+1440×900SXGA+1400×1050 WSXGA+1680×1050UXGA1600×1200WUXGA1920×1200QXGA2048×1536WQXGA2560×1536
 ```
+
+# 页面滚动到特定元素方法：
+方法1 用jQuery的animate方法：(先获取特定元素的距离页面顶部的top值 然后给body html添加animate方法) 推荐此方法
+```
+$("html,body").animate({scrollTop: $("#"+id).offset().top}, 1000);
+```
+方法2 用html5的api 详细介绍见https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView 有兼容性问题
+```
+ element.scrollIntoView(); // 等同于element.scrollIntoView(true) 
+```
+方法3 用id 链接的传统方式实现 （不建议）
