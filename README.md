@@ -1643,3 +1643,12 @@ $("html,body").animate({scrollTop: $("#"+id).offset().top}, 1000);
  element.scrollIntoView(); // 等同于element.scrollIntoView(true) 
 ```
 方法3 用id 链接的传统方式实现 （不建议）
+
+# 浮动布局中 比如一行有4个导航 3个在左侧排列 1个在最右侧
+如果用浮动 左侧3个分别制定float:left; 最右侧一个指定float: right;  
+而如果用flex布局 
+则父元素指定 flex-direction: row;
+      justify-content: flex-start;
+最后一个元素指定margin-left: auto;即可    
+属性是margin-left: auto;它让最后一项用上该侧所有可用的外边距
+
