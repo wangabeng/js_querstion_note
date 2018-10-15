@@ -1662,3 +1662,19 @@ flex实际上是三个属性合体的简写：flex-grow、flex-shrink和flex-bas
 再试一个：flex: 0 0 50px的意思是，这个伸缩项既不伸也不缩，基准为50像素（即无论是否存在自由空间，都是50像素）。  
 那么flex: 2 0 50%呢？意思就是会多占用两个可用空间，不收缩，基准为50%。
 
+# css文字渐变
+参考 https://www.zhangxinxu.com/study/201104/css3-text-gradient-2.html
+```
+CSS代码：
+.text-gradient {  
+    display: inline-block;
+    color: green;
+    font-size: 10em;
+    font-family: '微软雅黑';
+    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(0, 128, 0, 1)), to(rgba(51, 51, 51, 1)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+};
+HTML代码：
+<h2 class="text-gradient">天赐美妞</h2>
+```
