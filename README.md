@@ -1678,3 +1678,38 @@ CSS代码：
 HTML代码：
 <h2 class="text-gradient">天赐美妞</h2>
 ```
+
+# 购物车全选多选js及html
+```
+html
+然后对应的全选checkbox
+<input type="checkbox" name="praiseAll" class="J_select_all" />
+
+再然后就是那一堆的多选checkbox了
+<input type="checkbox" name="praise[]" class="J_select" value=""/>
+
+/*复选框操作*/
+$('.J_select_all').click(function(){
+	if($(this).is(':checked') == false){
+		$('.J_select').prop('checked',false);
+	}else{
+		$('.J_select').each(function(){
+			if($(this).is(':checked') == false){
+				$(this).prop('checked',true);
+			}
+		});
+	}	
+});
+$('.J_select').click(function(){
+	if($('.J_select_all').is(':checked')){
+		$('.J_select_all').prop('checked',false);
+	}else{
+		var checked = $('input:checked').length;
+		var checkbox = $('input[type="checkbox"]').length;
+		if(parseInt(checked) == parseInt(checkbox)-1){
+			$('.J_select_all').prop('checked',true);
+		}
+	}
+});
+
+```
