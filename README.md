@@ -1713,3 +1713,6 @@ $('.J_select').click(function(){
 });
 
 ```
+
+# 滚动条的坑：
+必须分层 外层为容器 控制高度 内层高度由自身撑开 外层为overflow:scroll
