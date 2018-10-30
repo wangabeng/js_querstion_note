@@ -1716,3 +1716,21 @@ $('.J_select').click(function(){
 
 # 滚动条的坑：
 必须分层 外层为容器 控制高度 内层高度由自身撑开 外层为overflow:scroll
+
+# 动态改变定时器的时间间隔(在九宫格抽奖项目中遇到的问题) 20181030
+九宫格抽奖在转动到10圈开始 每次间隔时间持续变长 用递归
+```
+定时器的时间间隔是不能修改的，只能不停的创建，清除，创建。做出时间间隔变换的表象
+使用函数表达式和递归实现：
+
+var counter = 10;
+var myFunction = function(){
+    clearInterval(interval);
+    counter *= 10;
+    interval = setInterval(myFunction, counter);
+}
+var interval = setInterval(myFunction, counter);
+
+由于在运行时，setInterval立马被清除，实际可用setTimeout代替。
+摘自 http://www.cnblogs.com/zhangyuping/p/3841706.html
+```
