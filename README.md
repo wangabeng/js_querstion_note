@@ -1734,3 +1734,18 @@ var interval = setInterval(myFunction, counter);
 由于在运行时，setInterval立马被清除，实际可用setTimeout代替。
 摘自 http://www.cnblogs.com/zhangyuping/p/3841706.html
 ```
+
+# 自由落体运动 加速度
+水平运动  
+匀速运动水平距离 = vx * t； 
+
+```
+V²-V0²=2aS // 
+V0----初速度
+V----终速度
+a----加速度
+S----路程
+```
+
+S=V0t+1/2at^2 // v0初始速度 t时间 a加速度  距离 = 初始速度 * 时间 + 1/2 * 加速度 * t^2
+
