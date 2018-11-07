@@ -1751,3 +1751,73 @@ S=V0t+1/2at^2 // v0初始速度 t时间 a加速度  距离 = 初始速度 * 时�
 
 # 前端js获取到图片的高度和宽度方法
 https://blog.csdn.net/baidu_18607183/article/details/79153342
+
+# html5中canvas画布实现手机端和移动端的刮刮乐效果
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>刮刮乐</title>
+    <script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="js/api.js" type="text/javascript"></script>
+    <style>
+        .content{
+            width:900px;
+            height: 500px;
+        background: url("images/zj.jpg") no-repeat;
+            margin: 0 auto;
+overflow: hidden;
+            position: relative
+        }
+        p{ width: 300px;height: 50px; background: #fff; margin: 0 auto; margin-top: 380px; margin-left: 360px; line-height: 50px;
+        text-align: center;display: block; }
+        #Canvas{ margin-left: 360px;position: absolute; bottom: 70px;cursor: pointer}
+    </style>
+</head>
+<body>
+<div class="content">
+    <p>谢谢惠顾</p>
+    <canvas width="300" height="50" id="Canvas">你的浏览器版本太低</canvas>
+</div>
+</body>
+</html>
+window.onload=function(e){
+        var canva=document.getElementById("Canvas");
+        if(canva.getContext){
+            var inghei=100;
+            canva2D=canva.getContext("2d");
+            canva2D.fillStyle="#ccc";
+            canva2D.fillRect(0,0,300,50);
+            //鼠标移动到“灰色上”
+            canva.onmousemove=function(e){
+                var  canavOffest = $(canva).offset();
+                var canvX=Math.floor(e.pageX - canavOffest.left);
+                var canvY=Math.floor(e.pageY-canavOffest.top);
+                var canvY =canvY+ parseInt(inghei);
+                lottery(canvX,canvY,canva2D);
+            }
+           function lottery(x,y,c){
+            c.clearRect(x,y-inghei,20,20);
+
+            }
+            //移动端手滑动
+            canva.addEventListener('touchmove',function(event){
+                //如果触屏时只有一只手
+                if(event.targetTouches.length == 1){
+                    event.preventDefault();// 阻止浏览器默认事件，重要
+                    var touch = event.targetTouches[0];
+                    var  canavOffest = $(canva).offset();
+                    var canvX=Math.floor(touch.pageX - canavOffest.left);
+                    var canvY=Math.floor(touch.pageY-canavOffest.top);
+                    var canvY =canvY+ parseInt(inghei);
+                    lottery(touch.canvX,touch.canvY,canva2D);
+                }
+
+            },false);
+        }
+    }
+
+原文：https://blog.csdn.net/wu_niang/article/details/50697858 
+
+```
