@@ -1129,6 +1129,83 @@ function getObjectURL(file) {
 
 ```
 
+# 原生js+canvas实现图片上传预览效果 极简版代码：
+  实现逻辑  
+  1 监听input的change事件  
+  2 change事件回调里 创建new File()实例 调用此实例的readDataAsURL方法 监听new File()实例的onload事件 在onload事件回调里通过this.result获取上传文件的base64格式的url数据  
+  3 把此base64的数据赋值给new Image()的src属性  
+  4 监听此image实例的onload方法，绘制convas图像 cxt.drawImage(img,50,50,300,100);  
+```
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+  <title></title>
+  <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  #canvas {
+  }
+
+  </style>
+</head>
+<body>
+  <input type="file" value='上传' id='inputbtn'>
+  <div class='wrapper'>
+    <canvas id="canvas" width="600" height="600"></canvas>
+  </div>
+</body>
+
+<script>
+/*
+  主要api
+  创建image对象 new Image() 
+    image对象赋值 imageObj.src = ''
+  创建file对象newFile =  new FileReader()
+    读取数据 newFile.readAsDataURL(this.files[0])
+  input上传的file 通过给input绑定change事件 多文件上传  multiple="multiple" this.files获取上传文件的类数组
+
+  canvas绘图 cxt.drawImage(img对象,50,50,300,100);
+
+  实现逻辑
+  1 监听input的change事件
+  2 change事件回调里 创建new File()实例 调用此实例的readDataAsURL方法 监听new File()实例的onload事件 在onload事件回调里通过this.result获取上传文件的base64格式的url数据
+  3 把此base64的数据赋值给new Image()的src属性
+  4 监听此image实例的onload方法，绘制convas图像 cxt.drawImage(img,50,50,300,100);
+
+ */
+window.onload= function () {
+  var canvas=document.getElementById("canvas");
+  var cxt=canvas.getContext("2d");
+
+  var inputBtn = document.getElementById('inputbtn');
+  inputBtn.onchange = function () {
+    // console.log(this.files[0]);
+    // 创建文件
+    var newFile = new FileReader();
+    newFile.readAsDataURL(this.files[0]);
+    newFile.onload = function () {
+      console.log(newFile.result);
+      var img=new Image();
+      img.src = newFile.result;
+
+      img.onload = function () {
+        cxt.drawImage(img,50,50,300,100);
+      }
+    }
+    
+  };
+
+}
+</script>
+</html>
+```
+
 # 图片懒加载
 https://zhuanlan.zhihu.com/p/24057749
 
