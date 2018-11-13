@@ -1898,3 +1898,5 @@ window.onload=function(e){
 原文：https://blog.csdn.net/wu_niang/article/details/50697858 
 
 ```
+# jquery监听radio标签是否被选中的正确方式
+$('input').is(':checked') // true为被选中 false未被选中
