@@ -1900,3 +1900,11 @@ window.onload=function(e){
 ```
 # jquery监听radio标签是否被选中的正确方式
 $('input').is(':checked') // true为被选中 false未被选中
+
+# 苹果iphone8以上 模态框 fixed 固定定位input type='text'出现光标问题，type = 'button'无法提交 点击button的上面区域才有效的bug
+问题参见： https://hackernoon.com/how-to-fix-the-ios-11-input-element-in-fixed-modals-bug-aaf66c7ba3f8  
+
+解决方法参考：
+https://stackoverflow.com/questions/46339063/ios-11-safari-bootstrap-modal-text-area-outside-of-cursor
+解决方法： 在模态框打开的时候 把body固定住 模态框
+
