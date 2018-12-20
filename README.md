@@ -1908,3 +1908,5 @@ $('input').is(':checked') // true为被选中 false未被选中
 https://stackoverflow.com/questions/46339063/ios-11-safari-bootstrap-modal-text-area-outside-of-cursor
 解决方法： 在模态框打开的时候 把body固定住 模态框
 
+解决方法优化版：
+每次弹出弹窗的时候，把body滚动到顶部。（同事亲测有效）
