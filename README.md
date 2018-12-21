@@ -1910,3 +1910,7 @@ https://stackoverflow.com/questions/46339063/ios-11-safari-bootstrap-modal-text-
 
 解决方法优化版：
 每次弹出弹窗的时候，把body滚动到顶部。（同事亲测有效）
+
+# 模仿vue MVVM模式
+https://segmentfault.com/a/1190000015441785  
+demo地址 https://danakuang.github.io/kup/view/mvvm/mvvm.html  
