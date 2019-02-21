@@ -1954,3 +1954,7 @@ demo地址 https://danakuang.github.io/kup/view/mvvm/mvvm.html
 
 </html>
 ```
+
+# ES6之promise 一篇就够了
+https://www.jianshu.com/p/fe5f173276bd
+
