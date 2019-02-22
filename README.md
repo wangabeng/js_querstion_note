@@ -1961,3 +1961,5 @@ https://www.jianshu.com/p/4a937870511d
 
 # 手写一个webpack
 https://juejin.im/post/5b4609f5e51d4519596b66a7
+
+# 深入剖析Vue原理&实现双向绑定MVVM
