@@ -1963,3 +1963,6 @@ https://www.jianshu.com/p/4a937870511d
 https://juejin.im/post/5b4609f5e51d4519596b66a7
 
 # 深入剖析Vue原理&实现双向绑定MVVM
+
+# Object.defineProperty设置属性  
+https://www.cnblogs.com/faith3/p/6139301.html
