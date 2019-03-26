@@ -1966,3 +1966,14 @@ https://juejin.im/post/5b4609f5e51d4519596b66a7
 
 # Object.defineProperty设置属性  
 https://www.cnblogs.com/faith3/p/6139301.html
+
+# 页面滚动到指定位置
+滚动到顶部：
+
+$('html,body').animate({scrollTop: '0px'}, 800);
+滚动到指定位置：
+
+$('html,body').animate({scrollTop:$('#id').offset().top}, 800);
+滚动到底部：
+
+$('html,body').animate({scrollTop:$('.bottom').offset().top}, 800);
