@@ -1977,3 +1977,14 @@ $('html,body').animate({scrollTop:$('#id').offset().top}, 800);
 滚动到底部：
 
 $('html,body').animate({scrollTop:$('.bottom').offset().top}, 800);
+
+# 在iOS11中position:fixed弹出框中的input光标错位的问题
+参考 https://www.jianshu.com/p/f9832efa0be8
+
+解决方案1【阿里做法】
+在弹框出现的时候给body添加fixed
+
+当弹框消失的时候
+$("body").css("position","relative")
+
+解决方案2 提交按钮不用input type=button 而用div代替
