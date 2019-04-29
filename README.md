@@ -1988,3 +1988,8 @@ $('html,body').animate({scrollTop:$('.bottom').offset().top}, 800);
 $("body").css("position","relative")
 
 解决方案2 提交按钮不用input type=button 而用div代替
+
+# 苹果手机 iframe 无法滚动bug
+https://www.cnblogs.com/geek12/p/4885202.html
+给承载iframe的div添加样式
+-webkit-overflow-scrolling:touch;overflow:scroll;
