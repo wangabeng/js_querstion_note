@@ -1997,3 +1997,6 @@ https://www.cnblogs.com/geek12/p/4885202.html
 # iphonex底部导航适配三法 
 https://mp.weixin.qq.com/s/6mu1PMkURvPvxpGuZM6uFQ
 https://www.jianshu.com/p/20681c58d2be
+
+# H5适配iphoneX
+https://www.jianshu.com/p/e4a7d95b288b
