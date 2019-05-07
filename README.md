@@ -2015,7 +2015,7 @@ div {
     width: 100px;
     border: 1px solid red;
     text-align: justify;
-    text-align-last:justify;
+    text-align-last:justify; // 把段落的最后一行向右对齐
 }
 div:after{
     content: '';
