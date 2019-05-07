@@ -2000,3 +2000,27 @@ https://www.jianshu.com/p/20681c58d2be
 
 # H5适配iphoneX（最靠谱的做法）
 https://www.jianshu.com/p/e4a7d95b288b
+
+# css两端对齐
+```
+// html
+<div>姓名</div>
+<div>手机号码</div>
+<div>账号</div>
+<div>密码</div>
+
+// css
+div {
+    margin: 10px 0; 
+    width: 100px;
+    border: 1px solid red;
+    text-align: justify;
+    text-align-last:justify;
+}
+div:after{
+    content: '';
+    display: inline-block;
+    width: 100%;
+}
+
+```
