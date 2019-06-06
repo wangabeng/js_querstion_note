@@ -2024,3 +2024,17 @@ div:after{
 }
 
 ```
+
+# 微信浏览器播放视频会自动全屏的问题
+微信内置的浏览器是QQ浏览器，个人感觉挺渣的（可能我使用不多对QQ浏览器无感）。  
+
+在微信浏览器里面使用video标签，一点击放视频会自动变成全屏，这个很蛋疼。  
+
+可以用一些H5的video属性：  
+```
+<video id="videoID"webkit-playsinline="true" x-webkit-airplay="true"  playsinline="true"x5-video-player-type="h5"x5-video-player-fullscreen="true"width="100%" height="100%"preload="auto"  poster="" src="">
+ </video>
+```
+有用了，换了一个属性，ios微信里总算不会跳全屏了。好评五星。  
+
+另附上html5中video的相关属性及方法   
