@@ -2038,3 +2038,62 @@ div:after{
 有用了，换了一个属性，ios微信里总算不会跳全屏了。好评五星。  
 
 另附上html5中video的相关属性及方法   
+
+# stick footer布局
+foot元素内容未满或超过一页都底部显示
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, table, td, img, div {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    body, html {
+        width: 100%;
+        margin: 0 auto;
+        height: 100%;
+        overflow-x: hidden;
+        background: red;
+
+    }
+
+    .wrapper {
+        min-height: 100%;
+
+    }
+
+    .main {
+        padding-bottom: 50px;
+    }
+
+    .footer {
+        background: green;
+        height: 50px;
+        margin-top: -50px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="main">
+        <span><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560081616846&di=05f9b33b126909b3f7e8e383e59c2227&imgtype=0&src=http%3A%2F%2Fimg0.ph.126.net%2FbHZwHrr3XQP-iFt7Hz-0Eg%3D%3D%2F6598197865587851388.jpg" alt=""></span>
+    </div>
+    <div class="push"></div>
+</div>
+
+<footer class="footer"></footer>
+
+</body>
+</html>
+```
